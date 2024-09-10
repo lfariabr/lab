@@ -7,11 +7,24 @@ st.write("This is a test")
 number1 = st.text_input("Enter first number:")
 number2 = st.text_input("Enter second number:")
 
-if st.button("Calculate"):
-    try:
-        number1 = float(number1)
-        number2 = float(number2)
-        result = number1 + number2
-        st.write(f"The result is: {result}")
-        except ValueError:
-        st.write("Please enter valid numbers.")
+operation = st.selectbox("Select operation:", ["Add", "Subtract", "Multiply", "Divide"])
+
+result = None
+
+st.button("Calculate")
+
+if operation == "Add":
+    result = float(number1) + float(number2)
+    st.write(f"Result: {result}")
+
+elif operation == "Subtract":
+    result = float(number1) - float(number2)
+    st.write(f"Result: {result}")
+
+elif operation == "Multiply":
+    result = float(number1) * float(number2)
+    st.write(f"Result: {result}")
+
+elif operation == "Divide":
+    result = float(number1) / float(number2)
+    st.write(f"Result: {result}")
