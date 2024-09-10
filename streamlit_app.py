@@ -11,8 +11,6 @@ operation = st.selectbox("Select operation:", ["Add", "Subtract", "Multiply", "D
 
 result = None
 
-st.button("Calculate")
-
 if number1 and number2:
   if operation == "Add":
       result = float(number1) + float(number2)
