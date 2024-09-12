@@ -51,7 +51,7 @@ elif page == "Currency Converter": # novo
     except ValueError:
       st.write("Invalid input. Please enter a valid number.")
 
-#### NOVO _ GRÁFICOS - novo 3
+#### NOVO _ GRÁFICOS - novo 4
 elif page == "Graphics": # novo3
 
   st.title("Graphics!")
@@ -76,10 +76,10 @@ elif page == "Graphics": # novo3
   df_leads_sp = df_leads[df_leads['Unidade'].isin(unidades_sp)]
 
   # Group by 'Dia do mês'
-  groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
+  groupby_sp_dia_da_semana_unidade = df_leads_sp.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'})
   st.write("Number of leads by day of the month:")
   # Criando o gráfico de barras empilhadas
-  fig_mes = px.bar(groupby_sp_dia_do_mes, 
+  fig_mes = px.bar(groupby_sp_dia_da_semana_unidade, 
                  x='Dia do mês', 
                  y='ID do lead', 
                  color='Unidade',  # Adiciona a segmentação por unidade
