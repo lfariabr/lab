@@ -102,7 +102,8 @@ elif page == "Graphics": # novo3
   fig_semana = px.bar(groupby_sp_dia_da_semana, x='Dia da semana', y='ID do lead', title='Leads by Day of the Week')
   st.plotly_chart(fig_semana)
 
-  # Pie chart using 'Dia da semana'
+  # Pie chart using 'Dia do mês'
+  groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
   fig_pie = px.pie(groupby_sp_dia_do_mes, values='ID do lead', names='Dia do mês', title='Leads Distribution by Day of the Month')
   st.plotly_chart(fig_pie)
 
