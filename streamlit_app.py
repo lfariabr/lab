@@ -81,4 +81,6 @@ elif page == "Graphics": # novo3
 
   groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia da semana').agg({'ID do lead': 'nunique'})
   groupby_sp_dia_do_mes.reset_index(inplace=True)
-  st.pizza_chart(groupby_sp_dia_do_mes.set_index('Dia da semana'))
+  fig, ax = plt.subplots()
+  ax.pie(groupby_sp_dia_da_semana['ID do lead'], labels=groupby_sp_dia_da_semana['Dia da semana'], autopct='%1.1f%%')
+  st.pyplot(fig)
