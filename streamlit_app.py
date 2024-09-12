@@ -76,7 +76,7 @@ elif page == "Graphics": # novo3
   df_leads_sp = df_leads[df_leads['Unidade'].isin(unidades_sp)]
 
   # Group by 'Dia do mês'
-  groupby_sp_dia_da_semana_unidade = df_leads_sp.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'})
+  groupby_sp_dia_da_semana_unidade = df_leads_sp.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by day of the month:")
   # Criando o gráfico de barras empilhadas
   fig_mes = px.bar(groupby_sp_dia_da_semana_unidade, 
@@ -85,6 +85,7 @@ elif page == "Graphics": # novo3
                  color='Unidade',  # Adiciona a segmentação por unidade
                  title='Leads by Day of the Month (Stacked by Unit)',
                  labels={'ID do lead': 'Number of Leads', 'Dia do mês': 'Day of the Month'})  # Ajusta os rótulos
+
 
   st.plotly_chart(fig_mes)
 
