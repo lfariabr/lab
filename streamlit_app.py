@@ -81,6 +81,12 @@ elif page == "Graphics": # novo3
   fig_mes = px.bar(groupby_sp_dia_do_mes, x='Dia do mês', y='ID do lead', title='Leads by Day of the Month')
   st.plotly_chart(fig_mes)
 
+  # Group by 'Unidade'
+  groupby_sp_unidade = df_leads_sp.groupby('Unidade').agg({'ID do lead': 'nunique'}).reset_index()
+  st.write("Number of leads by unit:")
+  fig_unidade = px.bar(groupby_sp_unidade, x='Unidade', y='ID do lead', title='Leads by Unit')
+  st.plotly_chart(fig_unidade)
+
   # Group by 'Dia da semana'
   groupby_sp_dia_da_semana = df_leads_sp.groupby('Dia da semana').agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by day of the week:")
