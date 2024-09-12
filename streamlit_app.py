@@ -1,4 +1,3 @@
-%%writefile /content/lab/streamlit_app.py
 
 import streamlit as st
 import pandas as pd # novo 3
@@ -91,3 +90,5 @@ elif page == "Graphics": # novo3
   # Pie chart using 'Dia da semana'
   fig_pie = px.pie(groupby_sp_dia_da_semana, values='ID do lead', names='Dia da semana', title='Leads Distribution by Day of the Week')
   st.plotly_chart(fig_pie)
+
+  # TEST TEST
