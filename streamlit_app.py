@@ -78,7 +78,14 @@ elif page == "Graphics": # novo3
   # Group by 'Dia do mês'
   groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by day of the month:")
-  fig_mes = px.bar(groupby_sp_dia_do_mes, x='Dia do mês', y='ID do lead', title='Leads by Day of the Month')
+  # Criando o gráfico de barras empilhadas
+  fig_mes = px.bar(groupby_sp_dia_do_mes, 
+                 x='Dia do mês', 
+                 y='ID do lead', 
+                 color='Unidade',  # Adiciona a segmentação por unidade
+                 title='Leads by Day of the Month (Stacked by Unit)',
+                 labels={'ID do lead': 'Number of Leads', 'Dia do mês': 'Day of the Month'})  # Ajusta os rótulos
+
   st.plotly_chart(fig_mes)
 
   # Group by 'Unidade'
