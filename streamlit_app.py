@@ -1,7 +1,7 @@
 
 import streamlit as st
 import pandas as pd # novo 3
-import matplotlib.pyplot as plt # novo 3
+import matplotlib.pyplot as plt
 
 
 # Sidebar for page selection
@@ -73,14 +73,20 @@ elif page == "Graphics": # novo3
               'IPIRANGA', 'ITAIM', 'TUCURUVI', 'MOEMA', 'OSASCO', 'SÃO BERNARDO', 
               'ALPHAVILLE', 'MOOCA', 'LAPA']
               
+  # Filter data for SP units
   df_leads_sp = df_leads[df_leads['Unidade'].isin(unidades_sp)]
 
-  groupby_sp_dia_da_semana = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'})
-  groupby_sp_dia_da_semana.reset_index(inplace=True)
-  st.bar_chart(groupby_sp_dia_da_semana.set_index('Dia do mês'))
+  # Group by 'Dia do mês'
+  groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
+  st.write("Number of leads by day of the month:")
+  st.bar_chart(groupby_sp_dia_do_mes.set_index('Dia do mês'))
 
-  groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia da semana').agg({'ID do lead': 'nunique'})
-  groupby_sp_dia_do_mes.reset_index(inplace=True)
+  # Group by 'Dia da semana'
+  groupby_sp_dia_da_semana = df_leads_sp.groupby('Dia da semana').agg({'ID do lead': 'nunique'}).reset_index()
+  st.write("Number of leads by day of the week:")
+  st.bar_chart(groupby_sp_dia_da_semana.set_index('Dia da semana'))
+
+  # Pie chart using 'Dia da semana'
   fig, ax = plt.subplots()
   ax.pie(groupby_sp_dia_da_semana['ID do lead'], labels=groupby_sp_dia_da_semana['Dia da semana'], autopct='%1.1f%%')
   st.pyplot(fig)
