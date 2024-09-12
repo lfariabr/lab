@@ -1,9 +1,8 @@
+%%writefile /content/lab/streamlit_app.py
 
 import streamlit as st
 import pandas as pd # novo 3
-import matplotlib
-import matplotlib.pyplot as plt
-
+import plotly.express as px
 
 # Sidebar for page selection
 st.sidebar.title("Navigation") # Novo
@@ -80,14 +79,15 @@ elif page == "Graphics": # novo3
   # Group by 'Dia do mês'
   groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by day of the month:")
-  st.bar_chart(groupby_sp_dia_do_mes.set_index('Dia do mês'))
+  fig_mes = px.bar(groupby_sp_dia_do_mes, x='Dia do mês', y='ID do lead', title='Leads by Day of the Month')
+  st.plotly_chart(fig_mes)
 
   # Group by 'Dia da semana'
   groupby_sp_dia_da_semana = df_leads_sp.groupby('Dia da semana').agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by day of the week:")
-  st.bar_chart(groupby_sp_dia_da_semana.set_index('Dia da semana'))
+  fig_semana = px.bar(groupby_sp_dia_da_semana, x='Dia da semana', y='ID do lead', title='Leads by Day of the Week')
+  st.plotly_chart(fig_semana)
 
   # Pie chart using 'Dia da semana'
-  fig, ax = plt.subplots()
-  ax.pie(groupby_sp_dia_da_semana['ID do lead'], labels=groupby_sp_dia_da_semana['Dia da semana'], autopct='%1.1f%%')
-  st.pyplot(fig)
+  fig_pie = px.pie(groupby_sp_dia_da_semana, values='ID do lead', names='Dia da semana', title='Leads Distribution by Day of the Week')
+  st.plotly_chart(fig_pie)
