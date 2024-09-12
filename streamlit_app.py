@@ -56,7 +56,7 @@ elif page == "Graphics": # novo3
 
   st.title("Graphics!")
 
-  leads = '/content/leads.xlsx'
+  leads = '/content/lab/leads.xlsx'
   df_leads = pd.read_excel(leads)
 
   # Datetimelike values on 'Dia da entrada'
