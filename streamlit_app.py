@@ -1,6 +1,7 @@
 
 import streamlit as st
 import pandas as pd # novo 3
+import matplotlib
 import matplotlib.pyplot as plt
 
 
