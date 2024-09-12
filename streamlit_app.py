@@ -84,7 +84,8 @@ elif page == "Graphics": # novo3
   # Group by 'Unidade'
   groupby_sp_unidade = df_leads_sp.groupby('Unidade').agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by unit:")
-  fig_unidade = px.bar(groupby_sp_unidade, x='Unidade', y='ID do lead', title='Leads by Unit')
+  #fig_unidade = px.bar(groupby_sp_unidade, x='Unidade', y='ID do lead', title='Leads by Unit')
+  fig_unidade = px.line(groupby_sp_unidade, x='Unidade', y='ID do lead', title='Leads by Unit')
   st.plotly_chart(fig_unidade)
 
   # Group by 'Dia da semana'
