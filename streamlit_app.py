@@ -2,6 +2,8 @@
 import streamlit as st
 import pandas as pd # novo 3
 import plotly.express as px
+import json
+import requests
 
 # Sidebar for page selection
 st.sidebar.title("Navigation") # Novo
@@ -36,7 +38,16 @@ if page == "Calculator": # novo
         st.write(f"Result: {result}")
 
 #### NOVO _ CONVERSOR
+
+
 elif page == "Currency Converter": # novo
+
+  # Declarando a URL:
+  url = 'https://api.exchangerate-api.com/v4/latest/USD'
+  my_request = requests.get(url)
+  content = my_request.content
+  dados = json.loads(content)
+  exchange_rate_br = dados['rates']['BRL']
 
   st.title("Currency Converter!")
 
@@ -46,7 +57,7 @@ elif page == "Currency Converter": # novo
   amount = st.number_input("Enter the amount:")
 
   if currency == "USD to BRL":
-    exchange_rate = 5.30
+    exchange_rate = exchange_rate_br
 
     result = amount * exchange_rate
     st.write(f"You have R${result}")
