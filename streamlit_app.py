@@ -39,10 +39,16 @@ if page == "Calculator": # novo
 elif page == "Currency Converter": # novo
 
   st.title("Currency Converter!")
-  st.selectbox("Select currency:", ["USD", "BRL", "AUD"])
+  currency = st.selectbox("Select currency:", ["USD", "BRL", "AUD"])
 
   amount = st.text_input("Enter the amount:")
-  exchange_rate = 0.20
+
+  if currency == "USD":
+    exchange_rate = 0.20
+  elif currency == "BRL":
+    exchange_rate = 0.05
+  elif currency == "AUD":
+    exchange_rate = 0.15
 
   if amount:
     try:
