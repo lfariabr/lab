@@ -44,12 +44,14 @@ elif page == "Currency Converter": # novo
   amount = st.number_input("Enter the amount:")
 
   if currency == "USD to BRL":
+    st.write("You have selected to convert your U$ to Brazilian R$")
     exchange_rate = 5.30
 
     result = amount * exchange_rate
     st.write(f"You have R${result}")
     
   elif currency == "BRL to USD":
+    st.write("You have selected to convert your R$ to U$D")
     exchange_rate = 0.20
 
     result = amount * exchange_rate
