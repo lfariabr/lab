@@ -48,6 +48,7 @@ elif page == "Currency Converter": # novo
   content = my_request.content
   dados = json.loads(content)
   exchange_rate_br = dados['rates']['BRL']
+  exchange_rate_us = 1/exchange_rate_br
 
   st.title("Currency Converter!")
 
@@ -61,8 +62,7 @@ elif page == "Currency Converter": # novo
     st.write(f"You have R${result}")
     
   elif currency == "BRL to USD":
-    exchange_rate = 0.20
-    result = amount * exchange_rate
+    result = amount * exchange_rate_us
     st.write(f"You have U${result}")
 
 
