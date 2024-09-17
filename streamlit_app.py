@@ -39,8 +39,8 @@ if page == "Calculator": # novo
 elif page == "Currency Converter": # novo
 
   st.title("Currency Converter!")
-  currency = st.selectbox("Select currency:", ["USD", "BRL", "AUD"])
 
+  currency = st.selectbox("Select currency:", ["USD", "BRL", "AUD"])
   amount = st.text_input("Enter the amount:")
 
   if currency == "USD":
@@ -52,9 +52,8 @@ elif page == "Currency Converter": # novo
 
   if amount:
     try:
-      real_value = float(amount)
-      dollar_value = real_value * exchange_rate
-      st.write(f"Result: ${dollar_value:.2f}")
+      result = amount * exchange_rate
+      st.write(f"Result: ${result:.2f}")
     except ValueError:
       st.write("Invalid input. Please enter a valid number.")
 
