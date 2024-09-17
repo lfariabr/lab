@@ -40,22 +40,19 @@ elif page == "Currency Converter": # novo
 
   st.title("Currency Converter!")
 
-  currency = st.selectbox("Select currency to convert to:", ["USD to BRL", "BRL to USD"])
-  
-  if currency == "USD to BRL":
-    st.write("You have selected to convert your U$ to Brazilian R$")
-    exchange_rate = 5.30
+  st.text("It's simple: select the currency, type in the value and the magic will apear!")
 
-    amount = st.number_input("Enter the amount:")
+  currency = st.selectbox("Options:", [None, "USD to BRL", "BRL to USD"])
+  amount = st.number_input("Enter the amount:")
+
+  if currency == "USD to BRL":
+    exchange_rate = 5.30
 
     result = amount * exchange_rate
     st.write(f"You have R${result}")
     
   elif currency == "BRL to USD":
-    st.write("You have selected to convert your R$ to U$D")
     exchange_rate = 0.20
-
-    amount = st.number_input("Enter the amount:")
 
     result = amount * exchange_rate
     st.write(f"You have U${result}")
