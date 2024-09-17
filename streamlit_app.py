@@ -47,13 +47,13 @@ elif page == "Currency Converter": # novo
     exchange_rate = 5.30
 
     result = amount * exchange_rate
-    st.write(f"The converted value is R$: {result}")
+    st.write(f"You have R${result}")
     
   elif currency == "BRL to USD":
     exchange_rate = 0.20
 
     result = amount * exchange_rate
-    st.write(f"The converted value is U$: {result}")
+    st.write(f"You have U${result}")
 
 
 #### NOVO _ GRÁFICOS - novo 4
