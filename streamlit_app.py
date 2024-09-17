@@ -44,7 +44,7 @@ elif page == "Currency Converter": # novo
   real_amount = st.number_input(
       "Enter the amount you have in real (R$)", value=None, placeholder="Type a number...")
   
-  st.write("The current number is ", number)
+  st.write("The current number is ", real_amount)
   exchange_rate = 0.20
 
   if real_amount:
