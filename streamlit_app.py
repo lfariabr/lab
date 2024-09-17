@@ -40,7 +40,11 @@ elif page == "Currency Converter": # novo
 
   st.title("Currency Converter!")
 
-  real_amount = st.text_input("Enter the amount in real (R$):")
+  # real_amount = st.number_input("Enter the amount in real (R$):")
+  real_amount = st.number_input(
+      "Enter the amount you have in real (R$)", value=None, placeholder="Type a number...")
+  
+  st.write("The current number is ", number)
   exchange_rate = 0.20
 
   if real_amount:
@@ -68,10 +72,10 @@ elif page == "Graphics": # novo3
   # Extract day of the month from 'Dia da entrada'
   df_leads['Dia da semana'] = df_leads['Dia da entrada'].dt.day
 
-  unidades_sp = ['JARDINS', 'SANTO AMARO', 'TATUAPÉ', 
-              'IPIRANGA', 'ITAIM', 'TUCURUVI', 'MOEMA', 'OSASCO', 'SÃO BERNARDO', 
+  unidades_sp = ['JARDINS', 'SANTO AMARO', 'TATUAPÉ',
+              'IPIRANGA', 'ITAIM', 'TUCURUVI', 'MOEMA', 'OSASCO', 'SÃO BERNARDO',
               'ALPHAVILLE', 'MOOCA', 'LAPA']
-              
+
   # Filter data for SP units
   df_leads_sp = df_leads[df_leads['Unidade'].isin(unidades_sp)]
 
@@ -79,9 +83,9 @@ elif page == "Graphics": # novo3
   groupby_sp_dia_da_semana_unidade = df_leads_sp.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by day of the month:")
   # Criando o gráfico de barras empilhadas
-  fig_mes = px.bar(groupby_sp_dia_da_semana_unidade, 
-                 x='Dia do mês', 
-                 y='ID do lead', 
+  fig_mes = px.bar(groupby_sp_dia_da_semana_unidade,
+                 x='Dia do mês',
+                 y='ID do lead',
                  color='Unidade',  # Adiciona a segmentação por unidade
                  title='Leads by Day of the Month (Stacked by Unit)',
                  labels={'ID do lead': 'Number of Leads', 'Dia do mês': 'Day of the Month'})  # Ajusta os rótulos
