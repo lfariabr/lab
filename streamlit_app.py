@@ -52,7 +52,7 @@ elif page == "Currency Converter": # novo
     except ValueError:
       st.write("Invalid input. Please enter a valid number.")
 
-#### NOVO _ GRÁFICOS - novo 3
+#### NOVO _ GRÁFICOS - novo 4
 elif page == "Graphics": # novo3
 
   st.title("Graphics!")
@@ -77,9 +77,17 @@ elif page == "Graphics": # novo3
   df_leads_sp = df_leads[df_leads['Unidade'].isin(unidades_sp)]
 
   # Group by 'Dia do mês'
-  groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
+  groupby_sp_dia_da_semana_unidade = df_leads_sp.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by day of the month:")
-  fig_mes = px.bar(groupby_sp_dia_do_mes, x='Dia do mês', y='ID do lead', title='Leads by Day of the Month')
+  # Criando o gráfico de barras empilhadas
+  fig_mes = px.bar(groupby_sp_dia_da_semana_unidade,
+                 x='Dia do mês',
+                 y='ID do lead',
+                 color='Unidade',  # Adiciona a segmentação por unidade
+                 title='Leads by Day of the Month (Stacked by Unit)',
+                 labels={'ID do lead': 'Number of Leads', 'Dia do mês': 'Day of the Month'})  # Ajusta os rótulos
+
+
   st.plotly_chart(fig_mes)
 
   # Group by 'Unidade'
@@ -95,7 +103,8 @@ elif page == "Graphics": # novo3
   fig_semana = px.bar(groupby_sp_dia_da_semana, x='Dia da semana', y='ID do lead', title='Leads by Day of the Week')
   st.plotly_chart(fig_semana)
 
-  # Pie chart using 'Dia da semana'
+  # Pie chart using 'Dia do mês'
+  groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
   fig_pie = px.pie(groupby_sp_dia_do_mes, values='ID do lead', names='Dia do mês', title='Leads Distribution by Day of the Month')
   st.plotly_chart(fig_pie)
 
