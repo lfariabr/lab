@@ -86,10 +86,7 @@ elif page == "Graphics":
   # Extract day of the month from 'Dia da entrada'
   df_leads['apenas_o_dia'] = df_leads['Dia da entrada'].dt.day
 
-  
-
   # Filter data for SP units
-  df_leads_sp = df_leads[df_leads['Unidade'].isin(unidades_sp)]
   df_leads_total = df_leads
 
   # Group by dia do mês and count unique leads
