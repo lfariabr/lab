@@ -86,7 +86,7 @@ elif page == "Graphics": # novo
   df_leads['Dia do mês'] = df_leads['Dia da entrada'].dt.day_name()
 
   # Extract day of the month from 'Dia da entrada'
-  df_leads['Dia da semana'] = df_leads['Dia da entrada'].dt.day
+  df_leads['apenas_o_dia'] = df_leads['Dia da entrada'].dt.day
 
   unidades_sp = ['JARDINS', 'SANTO AMARO', 'TATUAPÉ',
               'IPIRANGA', 'ITAIM', 'TUCURUVI', 'MOEMA', 'OSASCO', 'SÃO BERNARDO',
@@ -97,17 +97,17 @@ elif page == "Graphics": # novo
   df_leads_total = df_leads
 
   # Group by dia do mês and count unique leads
-  groupby_leads_dia_do_mes = df_leads.groupby('Dia da entrada').agg({'ID do lead': 'nunique'}).reset_index()
+  groupby_leads_dia_do_mes = df_leads.groupby('apenas_o_dia').agg({'ID do lead': 'nunique'}).reset_index()
 
   st.write("Número de leads por dia")
 
   # Create line graph for leads by day of the month
   graph_dia_do_mes = px.line(
       groupby_leads_dia_do_mes,
-      x='Dia da entrada',
+      x='apenas_o_dia',
       y='ID do lead',
-      title='Número de Leads por Dia da entrada',
-      labels={'ID do lead': 'Número de Leads', 'Dia da entrada': 'Dia da entrada'},
+      title='Número de Leads por apenas_o_dia',
+      labels={'ID do lead': 'Número de Leads', 'apenas_o_dia': 'apenas_o_dia'},
       markers=True  # Adiciona marcadores nos pontos da linha
   )
   # Display the graph
