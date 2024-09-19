@@ -97,7 +97,7 @@ elif page == "Graphics": # novo
   df_leads_total = df_leads
 
   # Group by dia do mês and count unique leads
-  groupby_leads_dia_do_mes = df_leads.groupby('Dia da entrada').agg({'ID do lead': 'nunique'}).reset_index()
+  groupby_leads_dia_do_mes = df_leads.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
 
   st.write("Número de leads por dia")
 
@@ -113,4 +113,3 @@ elif page == "Graphics": # novo
   # Display the graph
   st.plotly_chart(graph_dia_do_mes)
   
- 
