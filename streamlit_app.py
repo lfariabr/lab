@@ -96,19 +96,21 @@ elif page == "Graphics": # novo
   df_leads_sp = df_leads[df_leads['Unidade'].isin(unidades_sp)]
   df_leads_total = df_leads
 
-  # Groupby dia do mês
-  groupby_leads_dia_do_mes = df_leads_total.groupby(['Dia da entrada', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
-  st.write("Number of leads by the day of the month")
+  # Group by dia do mês and count unique leads
+  groupby_leads_dia_do_mes = df_leads.groupby('Dia da entrada').agg({'ID do lead': 'nunique'}).reset_index()
 
-  # Create graphic
+  st.write("Número de leads por dia")
+
+  # Create line graph for leads by day
   graph_dia_do_mes = px.line(
-        groupby_leads_dia_do_mes,
-        x='Dia da entrada',
-        y='ID do lead',
-        title='Número de Leads por Dia',
-        labels={'ID do lead': 'Número de Leads', 'Dia da entrada': 'Dia'}
-    )
-  
+      groupby_leads_dia_do_mes,
+      x='Dia da entrada',
+      y='ID do lead',
+      title='Número de Leads por Dia',
+      labels={'ID do lead': 'Número de Leads', 'Dia da entrada': 'Dia'}
+  )
+
+  # Display the graph
   st.plotly_chart(graph_dia_do_mes)
   
  
