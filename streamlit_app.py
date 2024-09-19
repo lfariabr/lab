@@ -101,48 +101,14 @@ elif page == "Graphics": # novo
   st.write("Number of leads by the day of the month")
 
   # Create graphic
-  graph_dia_do_mes = px.bar(
+  graph_dia_do_mes = px.line(
         groupby_leads_dia_do_mes,
         x='Dia da entrada',
         y='ID do lead',
-        #color='Unidade',
-        title='Número de Leads por Dia da entrada',
-        labels={'ID do lead': 'Número de Leads', 'Dia da entrada': 'Dia do Mês'},
-        barmode='group'
+        title='Número de Leads por Dia',
+        labels={'ID do lead': 'Número de Leads', 'Dia da entrada': 'Dia'}
     )
   
   st.plotly_chart(graph_dia_do_mes)
   
-  # Group by 'Dia da semana'
-  groupby_sp_dia_da_semana_unidade = df_leads_sp.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
-  st.write("Number of leads by day of the month:")
-  # Criando o gráfico de barras empilhadas
-  fig_mes = px.bar(groupby_sp_dia_da_semana_unidade,
-                 x='Dia do mês',
-                 y='ID do lead',
-                 color='Unidade',  # Adiciona a segmentação por unidade
-                 title='Leads by Day of the Month (Stacked by Unit)',
-                 labels={'ID do lead': 'Number of Leads', 'Dia do mês': 'Day of the Month'})  # Ajusta os rótulos
-
-
-  st.plotly_chart(fig_mes)
-
-  # Group by 'Unidade'
-  groupby_sp_unidade = df_leads_sp.groupby('Unidade').agg({'ID do lead': 'nunique'}).reset_index()
-  st.write("Number of leads by unit:")
-  #fig_unidade = px.bar(groupby_sp_unidade, x='Unidade', y='ID do lead', title='Leads by Unit')
-  fig_unidade = px.line(groupby_sp_unidade, x='Unidade', y='ID do lead', title='Leads by Unit')
-  st.plotly_chart(fig_unidade)
-
-  # Group by 'Dia da semana'
-  groupby_sp_dia_da_semana = df_leads_sp.groupby('Dia da semana').agg({'ID do lead': 'nunique'}).reset_index()
-  st.write("Number of leads by day of the week:")
-  fig_semana = px.bar(groupby_sp_dia_da_semana, x='Dia da semana', y='ID do lead', title='Leads by Day of the Week')
-  st.plotly_chart(fig_semana)
-
-  # Pie chart using 'Dia do mês'
-  groupby_sp_dia_do_mes = df_leads_sp.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
-  fig_pie = px.pie(groupby_sp_dia_do_mes, values='ID do lead', names='Dia do mês', title='Leads Distribution by Day of the Month')
-  st.plotly_chart(fig_pie)
-
-  # TEST TEST
+ 
