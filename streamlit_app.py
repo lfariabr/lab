@@ -97,17 +97,17 @@ elif page == "Graphics": # novo
   df_leads_total = df_leads
 
   # Groupby dia do mês
-  groupby_leads_dia_do_mes = df_leads_total.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
+  groupby_leads_dia_do_mes = df_leads_total.groupby(['Dia da entrada', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by the day of the month")
 
   # Create graphic
   graph_dia_do_mes = px.bar(
         groupby_leads_dia_do_mes,
-        x='Dia do mês',
+        x='Dia da entrada',
         y='ID do lead',
-        color='Unidade',
-        title='Número de Leads por Dia do Mês',
-        labels={'ID do lead': 'Número de Leads', 'Dia do mês': 'Dia do Mês'},
+        #color='Unidade',
+        title='Número de Leads por Dia da entrada',
+        labels={'ID do lead': 'Número de Leads', 'Dia da entrada': 'Dia do Mês'},
         barmode='group'
     )
   
