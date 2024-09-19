@@ -94,8 +94,26 @@ elif page == "Graphics": # novo
 
   # Filter data for SP units
   df_leads_sp = df_leads[df_leads['Unidade'].isin(unidades_sp)]
+  df_leads_total = df_leads
 
-  # Group by 'Dia do mês'
+  # Groupby dia do mês
+  groupby_leads_dia_do_mes = df_leads_total.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
+  st.write("Number of leads by the day of the month")
+
+  # Create graphic
+  graph_dia_do_mes = px.bar(
+        groupby_leads_dia_do_mes,
+        x='Dia do mês',
+        y='ID do lead',
+        color='Unidade',
+        title='Número de Leads por Dia do Mês',
+        labels={'ID do lead': 'Número de Leads', 'Dia do mês': 'Dia do Mês'},
+        barmode='group'
+    )
+  
+  st.plotly_chart(graph_dia_do_mes)
+  
+  # Group by 'Dia da semana'
   groupby_sp_dia_da_semana_unidade = df_leads_sp.groupby(['Dia do mês', 'Unidade']).agg({'ID do lead': 'nunique'}).reset_index()
   st.write("Number of leads by day of the month:")
   # Criando o gráfico de barras empilhadas
