@@ -97,17 +97,17 @@ elif page == "Graphics": # novo
   df_leads_total = df_leads
 
   # Group by dia do mês and count unique leads
-  groupby_leads_dia_do_mes = df_leads.groupby('Dia do mês').agg({'ID do lead': 'nunique'}).reset_index()
+  groupby_leads_dia_do_mes = df_leads.groupby('Dia da entrada').agg({'ID do lead': 'nunique'}).reset_index()
 
   st.write("Número de leads por dia")
 
   # Create line graph for leads by day of the month
   graph_dia_do_mes = px.line(
       groupby_leads_dia_do_mes,
-      x='Dia do mês',
+      x='Dia da entrada',
       y='ID do lead',
-      title='Número de Leads por Dia do Mês',
-      labels={'ID do lead': 'Número de Leads', 'Dia do mês': 'Dia do Mês'},
+      title='Número de Leads por Dia da entrada',
+      labels={'ID do lead': 'Número de Leads', 'Dia da entrada': 'Dia da entrada'},
       markers=True  # Adiciona marcadores nos pontos da linha
   )
   # Display the graph
