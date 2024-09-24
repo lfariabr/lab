@@ -72,8 +72,6 @@ elif page == "Currency Converter": # novo
     conversion_currency_2 = dados['rates'][currency_2]
 
   with col_2:
-    st.markdown("## R$ 100")
-
     converted_value = (amount * conversion_currency_2) / conversion_currency_1
     st.markdown(f"## {currency_2}{converted_value:.2f}")
 
