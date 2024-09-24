@@ -64,8 +64,8 @@ elif page == "Currency Converter": # novo
 
   with col_1:
 
-    currency_1 = st.selectbox("Value (from)", currencies, index=0)
-    currency_2 = st.selectbox("Value (to):", currencies, index=20)
+    currency_1 = st.selectbox("Value (from)", currencies, index=20)
+    currency_2 = st.selectbox("Value (to):", currencies, index=0)
 
 
     conversion_currency_1 = dados['rates'][currency_1]
