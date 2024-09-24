@@ -64,17 +64,14 @@ elif page == "Currency Converter": # novo
 
   with col_1:
 
-    currency_1 = st.selectbox("Options:", currencies)
-    currency_2 = st.selectbox("Options:", currencies)
-    amount = st.number_input("Enter the amount:")
+    currency_1 = st.selectbox("Options:", currencies, index=0)
+    currency_2 = st.selectbox("Options:", currencies, index=20)
+    amount = st.number_input("Enter the amount:", format="%0.2f")
+
+    conversion_currency_1 = dados['rates'][currency_1]
+    conversion_currency_2 = dados['rates'][currency_2]
 
   with col_2:
-    st.markdown("### Result:")
-
-    if currency == "USD to BRL":
-      result = amount * exchange_rate_br
-      st.write(f"You have R${result}")
-
-    elif currency == "BRL to USD":
-      result = amount * exchange_rate_us
-      st.write(f"You have U${result}")
+    st.markdown("## R# 100")
+    st.write(conversion_currency_1)
+    st.write(conversion_currency_2)
