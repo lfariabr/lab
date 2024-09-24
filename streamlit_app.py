@@ -66,12 +66,14 @@ elif page == "Currency Converter": # novo
 
     currency_1 = st.selectbox("Options:", currencies, index=0)
     currency_2 = st.selectbox("Options:", currencies, index=20)
-    amount = st.number_input("Enter the amount:", format="%0.2f")
+
 
     conversion_currency_1 = dados['rates'][currency_1]
     conversion_currency_2 = dados['rates'][currency_2]
 
   with col_2:
+    amount = st.number_input("Enter the amount:", format="%0.2f")
+    
     converted_value = (amount * conversion_currency_2) / conversion_currency_1
     st.markdown(f"## {currency_2}{converted_value:.2f}")
 
@@ -79,4 +81,3 @@ elif page == "Currency Converter": # novo
     # Testando o código
     # st.write(conversion_currency_1)
     # st.write(conversion_currency_2)
-
