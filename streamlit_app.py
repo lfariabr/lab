@@ -72,6 +72,13 @@ elif page == "Currency Converter": # novo
     conversion_currency_2 = dados['rates'][currency_2]
 
   with col_2:
-    st.markdown("## R# 100")
-    st.write(conversion_currency_1)
-    st.write(conversion_currency_2)
+    st.markdown("## R$ 100")
+
+    converted_value = (amount * conversion_currency_2) / conversion_currency_1
+    st.markdown(f"## {currency_2}{converted_value:.2f}")
+
+    #st.write(f"R$ {converted_value:.2f}")
+    # Testando o código
+    # st.write(conversion_currency_1)
+    # st.write(conversion_currency_2)
+
