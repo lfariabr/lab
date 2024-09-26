@@ -79,7 +79,7 @@ elif page == "Graphics":
   leads = 'leads.xlsx'
   df_leads = pd.read_excel(leads)
 
-  print(df_leads)
+  st.dataframe(df_leads)
 
   # # Playing with dates
   # df_leads['Dia da entrada'] = pd.to_datetime(df_leads['Dia da entrada']) # trata estes dados como texto
