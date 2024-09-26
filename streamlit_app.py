@@ -72,9 +72,9 @@ elif page == "Currency Converter":
 
 #### NOVO _ GRÁFICOS - novo
 
-elif page == "Graphics":
+elif page == "Graphics/Tables":
 
-  st.title("Graphics!")
+  st.title("Graphics/Tables")
 
   leads = 'leads.xlsx'
   df_leads = pd.read_excel(leads)
