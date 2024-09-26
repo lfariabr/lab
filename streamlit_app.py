@@ -42,10 +42,10 @@ if page == "Calculator": # novo
         result = float(number1) / float(number2)
         st.write(f"Result: {result}")
 
-#### NOVO _ CONVERSOR
+#### CONVERSOR API
 
 
-elif page == "Currency Converter": # novo
+elif page == "Currency Converter":
 
   # Declarando a URL:
   url = 'https://api.exchangerate-api.com/v4/latest/USD'
@@ -58,26 +58,50 @@ elif page == "Currency Converter": # novo
   st.title("Currency Converter!")
 
   st.text("It's simple: select the currency, type in the value and the magic will apear!")
-  currencies = list(dados['rates'].keys())
 
-  col_1, col_2 = st.columns(2)
+  currency = st.selectbox("Options:", [None, "USD to BRL", "BRL to USD"])
+  amount = st.number_input("Enter the amount:")
 
-  with col_1:
+  if currency == "USD to BRL":
+    result = amount * exchange_rate_br
+    st.write(f"You have R${result}")
 
-    currency_1 = st.selectbox("Value (from)", currencies, index=20)
-    currency_2 = st.selectbox("Value (to):", currencies, index=0)
+  elif currency == "BRL to USD":
+    result = amount * exchange_rate_us
+    st.write(f"You have U${result}")
 
+#### NOVO _ GRÁFICOS - novo
 
-    conversion_currency_1 = dados['rates'][currency_1]
-    conversion_currency_2 = dados['rates'][currency_2]
+elif page == "Graphics":
 
-  with col_2:
-    amount = st.number_input("Enter the amount:", format="%0.2f")
-    
-    converted_value = (amount * conversion_currency_2) / conversion_currency_1
-    st.markdown(f"## {currency_2}{converted_value:.2f}")
+  st.title("Graphics!")
 
-    #st.write(f"R$ {converted_value:.2f}")
-    # Testando o código
-    # st.write(conversion_currency_1)
-    # st.write(conversion_currency_2)
+  leads = 'leads.xlsx'
+  df_leads = pd.read_excel(leads)
+
+  # Playing with dates
+  df_leads['Dia da entrada'] = pd.to_datetime(df_leads['Dia da entrada']) # trata estes dados como texto
+  df_leads['Dia do mês'] = df_leads['Dia da entrada'].dt.day_name()
+
+  # Extract day of the month from 'Dia da entrada'
+  df_leads['apenas_o_dia'] = df_leads['Dia da entrada'].dt.day
+
+  # Filter data for SP units
+  df_leads_total = df_leads
+
+  # Group by dia do mês and count unique leads
+  groupby_leads_dia_do_mes = df_leads.groupby('apenas_o_dia').agg({'ID do lead': 'nunique'}).reset_index()
+
+  st.write("Número de leads por dia")
+
+  # Create line graph for leads by day of the month
+  graph_dia_do_mes = px.line(
+      groupby_leads_dia_do_mes,
+      x='apenas_o_dia',
+      y='ID do lead',
+      title='Número de Leads por apenas_o_dia',
+      labels={'ID do lead': 'Número de Leads', 'apenas_o_dia': 'Dia do mês'},
+      markers=True  # Adiciona marcadores nos pontos da linha
+  )
+  # Display the graph
+  st.plotly_chart(graph_dia_do_mes)
