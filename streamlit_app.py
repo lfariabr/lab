@@ -16,28 +16,24 @@ calculator = st.Page(
     "views/calculator.py",
     title="calculator",
     icon="🧮",
-    initial_sidebar_state="auto"
 )
 
 currency_converter = st.Page(
     "views/currency_converter.py",
     title="currency_converter",
     icon="💰",
-    initial_sidebar_state="auto"
 )
 
 graphics = st.Page(
     "views/graphics.py",
     title="graphics",
     icon="📈",
-    initial_sidebar_state="auto"
 )
 
 forca = st.Page(
     "views/forca.py",
     title="forca",
     icon="🎮",
-    initial_sidebar_state="auto"
 )
 
 # NAVIGATION SETUP
