@@ -1,8 +1,10 @@
 
+import streamlit as st
+import random
+
 #### NOVO: FORCA
 
 st.title("Forca")
-import random
 lista_palavras = []
 
 # Abrindo o arquivo de palavras
