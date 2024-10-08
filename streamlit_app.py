@@ -39,7 +39,7 @@ forca = st.Page(
 # NAVIGATION SETUP
 pg = st.navigation(
     {
-        "calculator": [calculator],
+        "menu": [calculator],
         "currency_converter": [currency_converter],
         "graphics": [graphics],
         "forca": [forca]
