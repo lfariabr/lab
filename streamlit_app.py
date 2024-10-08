@@ -115,3 +115,4 @@ elif page == "Graphics":
 elif page == "Forca":
 
   st.title("Forca")
+  st.button("TESTE")
