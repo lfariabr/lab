@@ -13,35 +13,35 @@ import plotly.express as px
 # PAGE SETUP
 
 calculator = st.Page(
+    "views/calculator.py",
     title="calculator",
     page_icon="🧮",
     layout="centered",
-    initial_sidebar_state="auto",
-    "views/calculator.py"
+    initial_sidebar_state="auto"
 )
 
 currency_converter = st.Page(
+    "views/currency_converter.py"
     title="currency_converter",
     page_icon="💰",
     layout="centered",
-    initial_sidebar_state="auto",
-    "views/currency_converter.py"
+    initial_sidebar_state="auto"
 )
 
 graphics = st.Page(
+    "views/graphics.py"
     title="graphics",
     page_icon="📈",
     layout="centered",
-    initial_sidebar_state="auto",
-    "views/graphics.py"
+    initial_sidebar_state="auto"
 )
 
 forca = st.Page(
+    "views/forca.py",
     title="forca",
     page_icon="🎮",
     layout="centered",
-    initial_sidebar_state="auto",
-    "views/forca.py"
+    initial_sidebar_state="auto"
 )
 
 # NAVIGATION SETUP
