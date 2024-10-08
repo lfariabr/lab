@@ -43,3 +43,15 @@ forca = st.Page(
     initial_sidebar_state="auto",
     "views/forca.py"
 )
+
+# NAVIGATION SETUP
+pg = st.navigation(
+    {
+        "calculator": [calculator],
+        "currency_converter": [currency_converter],
+        "graphics": [graphics],
+        "forca": [forca]
+    }
+)
+
+pg.run()
