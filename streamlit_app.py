@@ -7,12 +7,12 @@ import os
 import requests
 import json
 import streamlit as st
-import pandas as pd 
+import pandas as pd
 import plotly.express as px
 
 # Sidebar for page selection
 st.sidebar.title("Navigation") # Novo
-page = st.sidebar.selectbox("Choose a page", ["Calculator", "Currency Converter", "Graphics"]) # Novo
+page = st.sidebar.selectbox("Choose a page", ["Calculator", "Currency Converter", "Graphics", "Forca"]) # Novo
 
 if page == "Calculator": # novo
 
@@ -109,3 +109,9 @@ elif page == "Graphics":
   )
   # Display the graph
   st.plotly_chart(graph_dia_do_mes)
+
+#### NOVO: FORCA
+
+elif page == "Forca":
+
+  st.title("Forca")
