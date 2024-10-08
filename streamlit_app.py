@@ -21,7 +21,7 @@ calculator = st.Page(
 )
 
 currency_converter = st.Page(
-    "views/currency_converter.py"
+    "views/currency_converter.py",
     title="currency_converter",
     page_icon="💰",
     layout="centered",
@@ -29,7 +29,7 @@ currency_converter = st.Page(
 )
 
 graphics = st.Page(
-    "views/graphics.py"
+    "views/graphics.py",
     title="graphics",
     page_icon="📈",
     layout="centered",
