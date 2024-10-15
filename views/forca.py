@@ -26,4 +26,3 @@ if 'palavra_secreta' not in st.session_state:
 if st.button("Mudar palavra"):
   palavra_secreta = random.choice(lista_palavras)
   st.session_state['palavra_secreta'] = palavra_secreta
-  st.write(st.session_state['palavra_secreta'])
