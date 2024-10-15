@@ -17,5 +17,5 @@ palavra_secreta = random.choice(lista_palavras)
 st.write(palavra_secreta)
 
 # If click
-if st.button("Jogo da Forca..."):
-  st.write("Começar")
+if st.button("Começar!"):
+  st.write("Ótimo, vamos iniciar o Jogo!")
