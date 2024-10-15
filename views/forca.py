@@ -28,4 +28,4 @@ if st.button("Começar!"):
 
   st.write(st.session_state['palavra_secreta'])
 
-st.button("Começar!"):
+  st.button("Mudar palavra!"):
