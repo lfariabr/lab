@@ -17,5 +17,8 @@ palavra_secreta = random.choice(lista_palavras)
 st.write(palavra_secreta)
 
 # If click
+contador = 0
 if st.button("Começar!"):
-  st.write("Ótimo, vamos iniciar o Jogo!")
+  contador += 1
+
+  st.write(f"Contador: {contador}!")
