@@ -27,3 +27,6 @@ if st.button("Começar!"):
   st.session_state['contador'] += 1
 
   st.write(f"Contador: {st.session_state['contador']}")
+
+if st.button("Resetar!"):
+  st.session_state['contador'] == 0
