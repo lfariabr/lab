@@ -20,14 +20,12 @@ st.write(palavra_secreta)
 contador = 0
 
 # Se já inicializei, não será reiniciado novamente
-if 'contador' not in st.session_state:
-  st.session_state['contador'] = 0
+if 'palavra_secreta' not in st.session_state:
+  st.session_state['contador'] = palavra_secreta
   
 if st.button("Começar!"):
   st.session_state['contador'] += 1
 
-  st.write(f"Contador: {st.session_state['contador']}")
+  st.write(st.session_state['palavra_secreta'])
 
-if st.button("Resetar!"):
-  st.session_state['contador'] = 0
-  st.write(f"Contador resetado: {st.session_state['contador']}")
+st.button("Começar!"):
