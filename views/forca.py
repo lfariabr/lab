@@ -16,4 +16,6 @@ with open('content/palavras.txt', 'r') as arquivo:
 palavra_secreta = random.choice(lista_palavras)
 st.write(palavra_secreta)
 
-st.button("TESTE")
+# If click
+if st.button("Jogo da Forca...")
+  st.write("Começar")
