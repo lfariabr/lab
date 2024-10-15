@@ -18,7 +18,12 @@ st.write(palavra_secreta)
 
 # If click
 contador = 0
+
+# Se já inicializei, não será reiniciado novamente
+if 'contador' not in st.session_state:
+  st.session_state['contador'] = 0
+  
 if st.button("Começar!"):
-  contador += 1
+  st.session_state['contador'] += 1
 
   st.write(f"Contador: {contador}!")
