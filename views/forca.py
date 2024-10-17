@@ -17,7 +17,8 @@ palavra_secreta = random.choice(lista_palavras)
 st.write(palavra_secreta)
 
 for letra in palavra_secreta:
-  st.write(letra)
+  # st.write(letra)
+  palavra_chutada.append("_")
 
 # Se já inicializei, não será reiniciado novamente
 if 'palavra_secreta' not in st.session_state:
@@ -35,6 +36,9 @@ if st.button("Chutar"):
   if chute in palavra_secreta:
     st.write(chute)
     # Inserir Loop do Jogo
+
+  palavra_chutada_print = "".join(palavra_chutada)
+  st.write(palavra_chutada_print)
 
 # if st.button("Mudar palavra"):
 #   palavra_secreta = random.choice(lista_palavras)
