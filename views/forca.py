@@ -38,8 +38,9 @@ if st.button("Chutar"):
   palavra_chutada = st.session_state["palavra_chutada"]
 
   for index, letra in enumerate(palavra_secreta):
+    # Checando se a letra está na palavra:
     if chute == letra:
-      palavra_chutada[index] = chute
+      palavra_chutada[index] = letra
       acertos += 1
   
   palavra_chutada_print = " ".join(palavra_chutada)
