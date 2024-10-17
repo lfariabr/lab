@@ -10,25 +10,38 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Configuração da página
-calculadora = st.Page(
-    "view/calculadora.py",
-    title="calculadora",
+# PAGE SETUP
+
+calculator = st.Page(
+    "views/calculator.py",
+    title="calculator",
     icon="🧮",
 )
 
-forca = st.Page(
-    "view/forca.py",
-    title="jogo da forca",
-    icon="💀",
+currency_converter = st.Page(
+    "views/currency_converter.py",
+    title="currency_converter",
+    icon="💰",
 )
 
+graphics = st.Page(
+    "views/graphics.py",
+    title="graphics",
+    icon="📈",
+)
 
-# Configuração da navegação
+forca = st.Page(
+    "views/forca.py",
+    title="forca",
+    icon="🎮",
+)
+
+# NAVIGATION SETUP
 pg = st.navigation(
     {
-        "numbers 💀": [calculadora],
-        "Novembro": [forca]
+        "numbers": [calculator, currency_converter],
+        "pro-corpo": [graphics],
+        "games": [forca]
     }
 )
 
