@@ -68,8 +68,8 @@ while acertos < len(palavra_secreta) and tentativas > 0:
 
 
 # Se já inicializei, não será reiniciado novamente
-# if 'palavra_secreta' not in st.session_state:
-#   st.session_state['palavra_secreta'] = palavra_secreta
+if 'palavra_secreta' not in st.session_state:
+  st.session_state['palavra_secreta'] = palavra_secreta
 
 # if st.button("Mudar palavra"):
 #   palavra_secreta = random.choice(lista_palavras)
