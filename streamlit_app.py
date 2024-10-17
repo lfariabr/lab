@@ -23,3 +23,5 @@ pg = st.navigation(
         "parte1": [calculadora],
     }
 )
+
+pg.run()
