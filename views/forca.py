@@ -13,21 +13,20 @@ with open('content/palavras.txt', 'r') as arquivo:
 st.title("Jogo da Forca")
 
 # Se já inicializei, não será reiniciado novamente
-if 'palavra_secreta' not in st.session_state:
-  palavra_secreta = random.choice(lista_palavras)
-  st.session_state['palavra_secreta'] = palavra_secreta
-  palavra_chutada = []
-
-  st.write(palavra_secreta)
+if "palavra_secreta" not in st.session_state:
+  palavra_secreta = random.choice(lista_palavras) # Selecionar uma palavra aleatória
+  st.session_state["palavra_secreta"] = palavra_secreta
+  palavra_chutada = [] # Criar uma lista com os chutes
 
   for letra in palavra_secreta:
-    # iniciar a palavra de chutes com traços
-    palavra_chutada.append("_")    
+    # Iniciar a palavra de chutes com um monte de traço
+    palavra_chutada.append("_")
 
   st.session_state["palavra_chutada"] = palavra_chutada
 
 st.write(st.session_state["palavra_secreta"])
-chute = st.text_input("Chute uma letra:", max_chars=1)
+
+chute = st.text_input("Chute uma letra",max_chars=1)
 
 acertos = 0
 tentativas = 5
