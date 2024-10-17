@@ -1,48 +1,29 @@
-
-import os
-import shutil
-import subprocess
-import pandas as pd
-import os
-import requests
-import json
+# Código da Calculadora
+%%writefile /content/lab/view/calculadora.py
 import streamlit as st
-import pandas as pd
-import plotly.express as px
 
-# PAGE SETUP
+st.title("Calculator!")
 
-calculator = st.Page(
-    "views/calculator.py",
-    title="calculator",
-    icon="🧮",
-)
+  number1 = st.text_input("Enter first number:")
+  number2 = st.text_input("Enter second number:")
 
-currency_converter = st.Page(
-    "views/currency_converter.py",
-    title="currency_converter",
-    icon="💰",
-)
+  operation = st.selectbox("Select operation:", ["Add", "Subtract", "Multiply", "Divide"])
 
-graphics = st.Page(
-    "views/graphics.py",
-    title="graphics",
-    icon="📈",
-)
+  result = None
 
-forca = st.Page(
-    "views/forca.py",
-    title="forca",
-    icon="🎮",
-)
+  if number1 and number2:
+    if operation == "Add":
+        result = float(number1) + float(number2)
+        st.write(f"Result: {result}")
 
-# NAVIGATION SETUP
-pg = st.navigation(
-    {
-        "numbers": [calculator, currency_converter],
-        "pro-corpo": [graphics],
-        "games": [forca]
-    }
-)
+    elif operation == "Subtract":
+        result = float(number1) - float(number2)
+        st.write(f"Result: {result}")
 
-pg.run()
+    elif operation == "Multiply":
+        result = float(number1) * float(number2)
+        st.write(f"Result: {result}")
+
+    elif operation == "Divide":
+        result = float(number1) / float(number2)
+        st.write(f"Result: {result}")
