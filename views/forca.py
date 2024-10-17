@@ -24,8 +24,9 @@ if 'palavra_secreta' not in st.session_state:
     # iniciar a palavra de chutes com traços
     palavra_chutada.append("_")    
 
-st.session_state["palavra_chutada"] = palavra_chutada
+  st.session_state["palavra_chutada"] = palavra_chutada
 
+st.write(st.session_state["palavra_secreta"])
 chute = st.text_input("Chute uma letra:", max_chars=1)
 
 acertos = 0
