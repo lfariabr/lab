@@ -27,7 +27,8 @@ forca = st.Page(
 # Configuração da navegação
 pg = st.navigation(
     {
-        "Outubro": [calculadora, forca],
+        "numbers 💀": [calculadora],
+        "Novembro": [forca]
     }
 )
 
