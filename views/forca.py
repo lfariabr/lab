@@ -18,7 +18,7 @@ st.write(palavra_secreta)
 
 for letra in palavra_secreta:
   st.write(letra)
-  
+
 # Se já inicializei, não será reiniciado novamente
 if 'palavra_secreta' not in st.session_state:
   st.session_state['palavra_secreta'] = palavra_secreta
