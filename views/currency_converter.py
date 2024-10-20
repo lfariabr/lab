@@ -1,10 +1,6 @@
 import requests
 import json
 import streamlit as st
-import locale
-
-# Set locale to Brazilian Portuguese for currency formatting
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 #### CONVERSOR API
 
@@ -36,8 +32,8 @@ with col_2:
   amount = st.number_input("Enter the amount:", format="%0.2f")
 
   converted_value = (amount * conversion_currency_2) / conversion_currency_1
-  # Format the converted value using Brazilian Real currency format
-  formatted_value = locale.currency(converted_value, grouping=True)
+  # Manual formatting for Brazilian currency format (R$ XX.XXX,XX)
+  formatted_value = f"R$ {converted_value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
   st.markdown(f"## {formatted_value}")
 
