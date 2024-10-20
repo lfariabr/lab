@@ -1,6 +1,8 @@
 import requests
 import json
 import streamlit as st
+import locale
+
 # Set locale to Brazilian Portuguese for currency formatting
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
