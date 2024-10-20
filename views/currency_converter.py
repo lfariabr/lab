@@ -33,5 +33,7 @@ with col_2:
 
   converted_value = (amount * conversion_currency_2) / conversion_currency_1
   st.markdown(f"## {currency_2}{converted_value:.2f}")
-  # say the rate applied on conversion
-  st.write(f"valor atual: {conversion_currency_1}")
+
+  # Display the exchange rate between the two currencies
+  exchange_rate = conversion_currency_2 / conversion_currency_1
+  st.write(f"Exchange rate: 1 {currency_1} = {exchange_rate:.4f} {currency_2}")
