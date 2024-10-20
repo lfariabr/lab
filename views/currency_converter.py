@@ -15,14 +15,21 @@ exchange_rate_us = 1/exchange_rate_br
 st.title("Currency Converter!")
 
 st.text("It's simple: select the currency, type in the value and the magic will apear!")
+currencies = list(dados['rates'].keys())
 
-currency = st.selectbox("Options:", [None, "USD to BRL", "BRL to USD"])
-amount = st.number_input("Enter the amount:")
+col_1, col_2 = st.columns(2)
 
-if currency == "USD to BRL":
-  result = amount * exchange_rate_br
-  st.write(f"You have R${result}")
+with col_1:
 
-elif currency == "BRL to USD":
-  result = amount * exchange_rate_us
-  st.write(f"You have U${result}")
+  currency_1 = st.selectbox("Value (from)", currencies, index=20)
+  currency_2 = st.selectbox("Value (to):", currencies, index=0)
+
+
+  conversion_currency_1 = dados['rates'][currency_1]
+  conversion_currency_2 = dados['rates'][currency_2]
+
+with col_2:
+  amount = st.number_input("Enter the amount:", format="%0.2f")
+
+  converted_value = (amount * conversion_currency_2) / conversion_currency_1
+  st.markdown(f"## {currency_2}{converted_value:.2f}")
