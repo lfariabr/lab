@@ -36,4 +36,6 @@ with col_2:
 
   # Display the exchange rate between the two currencies
   exchange_rate = conversion_currency_2 / conversion_currency_1
-  st.write(f"Exchange rate: 1 {currency_1} = {exchange_rate:.4f} {currency_2}")
+  st.write(f"current rate: 1 {currency_1} = {exchange_rate:.4f} {currency_2}")
+
+st.write("Data loaded from https://www.exchangerate-api.com/")
