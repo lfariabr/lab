@@ -33,7 +33,7 @@ with col_2:
 
   converted_value = (amount * conversion_currency_2) / conversion_currency_1
   # Manual formatting for Brazilian currency format (R$ XX.XXX,XX)
-  formatted_value = f"R$ {converted_value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+  formatted_value = f"$ {converted_value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
   st.markdown(f"## {formatted_value}")
 
