@@ -18,7 +18,7 @@ if "palavra_secreta" not in st.session_state:
   st.session_state["palavra_chutada"] = ["_" for letra in st.session_state["palavra_secreta"]]
   st.session_state["letras_chutadas"] = []
   st.session_state["acertos"] = 0
-  st.session_state["tentativas"] = 5
+  st.session_state["tentativas"] = len(st.session_state["palavra_secreta"])
 
 # Mostrar a palavra atual e chute
 st.write(st.session_state["palavra_secreta"])
