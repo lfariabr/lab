@@ -65,6 +65,6 @@ if st.button("Chutar"):
     elif tentativas == 0:
       st.error(f"Você perdeu! A palavra era {palavra_secreta}")
     else:
-      st.write(f"Palavra atual: {' '.join(palavra_chutada)}")
-      st.write(f"Tentativas restantes: {tentativas}")
-      st.write(f"Letras chutadas: {', '.join(letras_chutadas)}")
+      st.write(f"#### Palavra atual: {' '.join(palavra_chutada)}")
+      st.write(f"##### Tentativas restantes: {tentativas}")
+      st.write(f"##### Letras chutadas: {', '.join(letras_chutadas)}")
