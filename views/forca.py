@@ -21,6 +21,7 @@ if "palavra_secreta" not in st.session_state:
   st.session_state["tentativas"] = len(st.session_state["palavra_secreta"])
 
 # Mostrar a palavra atual e chute
+st.write(st.session_state["palavra_secreta"])
 st.write("Palavra atual:")
 st.markdown("# " + " ".join(st.session_state["palavra_chutada"]))
 chute = st.text_input("Chute uma letra:", max_chars=1)
@@ -58,13 +59,12 @@ if st.button("Chutar"):
     st.session_state["acertos"] = acertos
     st.session_state["tentativas"] = tentativas
 
-# Verificar se o jogador ganhou ou perdeu
-if st.session_state["acertos"] == len(st.session_state["palavra_secreta"]):
-  st.success(f"Parabéns! A palavra era {st.session_state['palavra_secreta']}. Você venceu!")
-elif st.session_state["tentativas"] == 0:
-  st.error(f"Você perdeu! A palavra era {st.session_state['palavra_secreta']}")
-
-# Mostrar o progresso atual da palavra e tentativas
-st.write(f"Palavra atual: {' '.join(st.session_state['palavra_chutada'])}")
-st.write(f"Tentativas restantes: {st.session_state['tentativas']}")
-st.write(f"Letras chutadas: {', '.join(st.session_state['letras_chutadas'])}")
+    # Verificar se o jogador ganhou ou perdeu
+    if acertos == len(palavra_secreta):
+      st.success(f"Parabéns! A palavra era {palavra_secreta}. Você venceu!")
+    elif tentativas == 0:
+      st.error(f"Você perdeu! A palavra era {palavra_secreta}")
+    else:
+      st.write(f"Palavra atual: {' '.join(palavra_chutada)}")
+      st.write(f"Tentativas restantes: {tentativas}")
+      st.write(f"Letras chutadas: {', '.join(letras_chutadas)}")
