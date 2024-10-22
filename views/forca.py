@@ -18,15 +18,6 @@ if "palavra_secreta" not in st.session_state:
   st.session_state["palavra_secreta"] = palavra_secreta
   palavra_chutada = [] # Criar uma lista com os chutes
 
-if "letras_chutadas" in st.session_state:
-  pass
-else:
-  st.session_state["letras_chutadas"] = ["_" for letra in palavra_secreta]
-
-letras_chutadas = st.session_state["letras_chutadas"]
-
-st.write(" ".join(letras_chutadas))
-
   for letra in palavra_secreta:
     # iniciar a palavra de chutes com traços
     palavra_chutada.append("_")
