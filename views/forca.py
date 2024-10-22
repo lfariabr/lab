@@ -23,7 +23,7 @@ if "palavra_secreta" not in st.session_state:
 # Mostrar a palavra atual e chute
 st.write(st.session_state["palavra_secreta"])
 st.write("Palavra atual:")
-st.markdown("#" + " ".join(st.session_state["palavra_chutada"]))
+st.markdown("# " + " ".join(st.session_state["palavra_chutada"]))
 chute = st.text_input("Chute uma letra:", max_chars=1)
 
 # Processar o chute ao clicar no botão:
