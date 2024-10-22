@@ -16,6 +16,7 @@ st.title("Jogo da Forca")
 if "palavra_secreta" not in st.session_state:
   palavra_secreta = random.choice(lista_palavras) # Selecionar uma palavra aleatória
   st.session_state["palavra_secreta"] = palavra_secreta
+  st.session_state["letras_chutadas"] = [] # Lista vazia para as letras chutadas
   palavra_chutada = [] # Criar uma lista com os chutes
 
   for letra in palavra_secreta:
