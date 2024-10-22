@@ -67,4 +67,4 @@ if st.button("Chutar"):
     else:
       st.write(f"#### Palavra atual: {' '.join(palavra_chutada)}")
       st.write(f"##### Letras chutadas: {', '.join(letras_chutadas)}")
-      st.write(f"###### Tentativas restantes: {tentativas}")
+      st.write(f"Tentativas restantes: {tentativas}")
