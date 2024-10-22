@@ -32,3 +32,38 @@ if st.button("Chutar"):
   letras_chutadas = st.session_state["letras_chutadas"]
   acertos = st.session_state["acertos"]
   tentativas = st.session_state["tentativas"]
+
+  # Verificar se o chute já foi feito
+  if chute in letras_chutadas:
+    st.warning("Você já chutou essa letra. Tente outra.")
+  else:
+    acertou = False
+
+    # Verificar se o chute está correto
+    for index, letra in enumerate(palavra_secreta):
+      if chute == letra:
+        palavra_chutada[index] = letra
+        acertos += 1
+        acertou = True
+    
+    # Se o chute estiver incorreto
+    if not acertou:
+      tentativas -= 1
+      letras_chutadas.append(chute)
+      st.warning(f"{chute} não está na palavra. Tentativas restantes: {tentativas}")
+
+    # Atualizar o estado do jogo com novos valores
+    st.session_state["palavra_chutada"] = palavra_chutada
+    st.session_state["letras_chutadas"] = letras_chutadas
+    st.session_state["acertos"] = acertos
+    st.session_state["tentativas"] = tentativas
+
+    # Verificar se o jogador ganhou ou perdeu
+    if acertos == len(palavra_secreta):
+      st.success(f"Parabéns! A palavra era {palavra_secreta}. Você venceu!")
+    elif tentativas == 0:
+      st.error(f"Você perdeu! A palavra era {palavra_secreta}")
+    else:
+      st.write(f"Palavra atual: {' '.join(palavra_chutada)}")
+      st.write(f"Tentativas restantes: {tentativas}")
+      st.write(f"Letras chutadas: {', '.join(letras_chutadas)}")
