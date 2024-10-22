@@ -12,11 +12,11 @@ with open('content/palavras.txt', 'r') as arquivo:
 
 st.title("Jogo da Forca")
 
-# Inicializar valores no session_state
+# Inicializar variáveis no session_state se elas não existirem
 if "palavra_secreta" not in st.session_state:
     palavra_secreta = random.choice(lista_palavras)  # Selecionar uma palavra aleatória
     st.session_state["palavra_secreta"] = palavra_secreta
-    st.session_state["letras_chutadas"] = []  # Inicializar lista vazia de letras chutadas
+    st.session_state["letras_chutadas"] = []  # Inicializar a lista vazia de letras chutadas
     st.session_state["tentativas"] = 5  # Inicializar tentativas
     st.session_state["acertos"] = 0  # Inicializar acertos
 
@@ -24,13 +24,13 @@ if "palavra_secreta" not in st.session_state:
     palavra_chutada = ["_" for letra in palavra_secreta]
     st.session_state["palavra_chutada"] = palavra_chutada
 
-# Mostrar a palavra secreta temporariamente (para depuração)
+# Mostrar a palavra secreta temporariamente (para depuração, pode remover depois)
 st.write(st.session_state["palavra_secreta"])
 
 # Entrada para o chute
 chute = st.text_input("Chute uma letra:", max_chars=1)
 
-# Botão de chute
+# Verificar se o chute foi feito e processar
 if st.button("Chutar"):
     palavra_secreta = st.session_state["palavra_secreta"]
     palavra_chutada = st.session_state["palavra_chutada"]
