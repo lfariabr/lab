@@ -20,7 +20,7 @@ if "palavra_secreta" not in st.session_state:
 
   for letra in palavra_secreta:
     # iniciar a palavra de chutes com traços
-    palavra_chutada.append("_")    
+    palavra_chutada.append("_")
 
   st.session_state["palavra_chutada"] = palavra_chutada
 
@@ -42,12 +42,9 @@ if st.button("Chutar"):
     if chute == letra:
       palavra_chutada[index] = letra
       acertos += 1
-  
+
   palavra_chutada_print = " ".join(palavra_chutada)
   st.write(palavra_chutada_print)
-
-
-
 
     # Inserir Loop do Jogo
 
