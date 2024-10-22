@@ -36,6 +36,7 @@ letras_chutadas = []
 if st.button("Chutar"):
   palavra_secreta = st.session_state["palavra_secreta"]
   palavra_chutada = st.session_state["palavra_chutada"]
+  letras_chutadas = st.session_state["letras_chutadas"]
 
   for index, letra in enumerate(palavra_secreta):
     # Checando se a letra está na palavra:
