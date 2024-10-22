@@ -16,7 +16,6 @@ st.title("Jogo da Forca")
 if "palavra_secreta" not in st.session_state:
   palavra_secreta = random.choice(lista_palavras) # Selecionar uma palavra aleatória
   st.session_state["palavra_secreta"] = palavra_secreta
-  st.session_state["letras_chutadas"] 
   palavra_chutada = [] # Criar uma lista com os chutes
 
   for letra in palavra_secreta:
@@ -37,24 +36,13 @@ letras_chutadas = []
 if st.button("Chutar"):
   palavra_secreta = st.session_state["palavra_secreta"]
   palavra_chutada = st.session_state["palavra_chutada"]
-  letras_chutadas = st.session_state["letras_chutadas"]
 
   for index, letra in enumerate(palavra_secreta):
     # Checando se a letra está na palavra:
     if chute == letra:
       palavra_chutada[index] = letra
       acertos += 1
-      acertou = True
-  
-  if acertou == False:
-    tentativas -=1
-    lista_letras_chutadas = st.session_state["letras_chutadas"]
-    lista_letras_chutadas.append(chute)
-    st.session_state["letras_chutadas"] = lista_letras_chutadas
-    print(f"{chute} não está na palavra secreta")
-    print(f"Letras chutadas: {lista_letras_chutadas}")
-    print(f"Tentativas restantes: {tentativas}")
-    
+
   palavra_chutada_print = " ".join(palavra_chutada)
   st.write(palavra_chutada_print)
 
