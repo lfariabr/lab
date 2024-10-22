@@ -42,6 +42,14 @@ if st.button("Chutar"):
     if chute == letra:
       palavra_chutada[index] = letra
       acertos += 1
+      print("Acertou!")
+    
+    if chute != letra:
+      letras_chutadas.append(chute)
+      tentativas -= 1
+      print("Errou!")
+
+    
 
   palavra_chutada_print = " ".join(palavra_chutada)
   st.write(palavra_chutada_print)
