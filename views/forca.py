@@ -43,8 +43,8 @@ if st.button("Chutar"):
       palavra_chutada[index] = letra
       acertos += 1
 
-  palavra_chutada_print = " ".join(palavra_chutada)
-  st.write(palavra_chutada_print)
+    palavra_chutada_print = " ".join(palavra_chutada)
+    st.write(palavra_chutada_print)
 
     # Inserir Loop do Jogo
 
