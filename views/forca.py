@@ -21,7 +21,7 @@ if "palavra_secreta" not in st.session_state:
   st.session_state["tentativas"] = 5
 
 # Mostrar a palavra atual e chute
-st.write(palavra_secreta)
+st.write(st.session_state["palavra_secreta"])
 st.write("Palavra atual: " + " ".join(st.session_state["palavra_chutada"]))
 chute = st.text_input("Chute uma letra:", max_chars=1)
 
