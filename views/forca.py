@@ -59,6 +59,9 @@ if st.button("Chutar"):
     st.session_state["acertos"] = acertos
     st.session_state["tentativas"] = tentativas
 
+    # Forçar a atualização da interface
+    st.experimental_rerun()
+
     # Verificar se o jogador ganhou ou perdeu
     if acertos == len(palavra_secreta):
       st.success(f"Parabéns! A palavra era {palavra_secreta}. Você venceu!")
