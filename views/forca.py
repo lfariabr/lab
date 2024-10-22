@@ -12,49 +12,22 @@ with open('content/palavras.txt', 'r') as arquivo:
 
 st.title("Jogo da Forca")
 
-# Se já inicializei, não será reiniciado novamente
+# Inicializar variáveis no session_state, caso não existam
 if "palavra_secreta" not in st.session_state:
-  palavra_secreta = random.choice(lista_palavras) # Selecionar uma palavra aleatória
-  st.session_state["palavra_secreta"] = palavra_secreta
-  palavra_chutada = [] # Criar uma lista com os chutes
+  st.session_state["palavra_secreta"] = random.choice(lista_palavras)
+  st.session_state["palavra_chutada"] = ["_" for letra in st.session_state["palavra_secreta"]]
+  st.session_state["letras_chutadas"] = []
+  st.session_state["acertos"] = 0
+  st.session_state["tentativas"] = 5
 
-  for letra in palavra_secreta:
-    # iniciar a palavra de chutes com traços
-    palavra_chutada.append("_")
-
-  st.session_state["palavra_chutada"] = palavra_chutada
-
-st.write(st.session_state["palavra_secreta"])
+# Mostrar a palavra atual e chute
+st.write("Palavra atual" + " ".join(st.session_state["palavra_chutada"]))
 chute = st.text_input("Chute uma letra:", max_chars=1)
 
-acertos = 0
-tentativas = 5
-acertou = False
-
-letras_chutadas = []
-
+# Processar o chute ao clicar no botão:
 if st.button("Chutar"):
   palavra_secreta = st.session_state["palavra_secreta"]
   palavra_chutada = st.session_state["palavra_chutada"]
-
-  for index, letra in enumerate(palavra_secreta):
-    # Checando se a letra está na palavra:
-    if chute == letra:
-      palavra_chutada[index] = letra
-      acertos += 1
-
-    else:
-      letras_chutadas.append(chute)
-      tentativas -= 1
-
-  if acertos == len(palavra_secreta):
-    acertou = True
-    
-  palavra_chutada_print = " ".join(palavra_chutada)
-  st.write(palavra_chutada_print)
-
-    # Inserir Loop do Jogo
-
-# if st.button("Mudar palavra"):
-#   palavra_secreta = random.choice(lista_palavras)
-#   st.session_state['palavra_secreta'] = palavra_secreta
+  letras_chutadas = st.session_state["letras_chutadas"]
+  acertos = st.session_state["acertos"]
+  tentativas = st.session_state["tentativas"]
