@@ -12,60 +12,54 @@ with open('content/palavras.txt', 'r') as arquivo:
 
 st.title("Jogo da Forca")
 
-# Inicializar variáveis no session_state se elas não existirem
+# Se já inicializei, não será reiniciado novamente
 if "palavra_secreta" not in st.session_state:
-    palavra_secreta = random.choice(lista_palavras)  # Selecionar uma palavra aleatória
-    st.session_state["palavra_secreta"] = palavra_secreta
-    st.session_state["letras_chutadas"] = []  # Inicializar a lista vazia de letras chutadas
-    st.session_state["tentativas"] = 5  # Inicializar tentativas
-    st.session_state["acertos"] = 0  # Inicializar acertos
+  palavra_secreta = random.choice(lista_palavras) # Selecionar uma palavra aleatória
+  st.session_state["palavra_secreta"] = palavra_secreta
+  st.session_state["letras_chutadas"] 
+  palavra_chutada = [] # Criar uma lista com os chutes
 
-    # Criar a lista de traços para a palavra chutada
-    palavra_chutada = ["_" for letra in palavra_secreta]
-    st.session_state["palavra_chutada"] = palavra_chutada
+  for letra in palavra_secreta:
+    # iniciar a palavra de chutes com traços
+    palavra_chutada.append("_")
 
-# Mostrar a palavra secreta temporariamente (para depuração, pode remover depois)
+  st.session_state["palavra_chutada"] = palavra_chutada
+
 st.write(st.session_state["palavra_secreta"])
-
-# Entrada para o chute
 chute = st.text_input("Chute uma letra:", max_chars=1)
 
-# Verificar se o chute foi feito e processar
+acertos = 0
+tentativas = 5
+acertou = False
+
+letras_chutadas = []
+
 if st.button("Chutar"):
-    palavra_secreta = st.session_state["palavra_secreta"]
-    palavra_chutada = st.session_state["palavra_chutada"]
-    letras_chutadas = st.session_state["letras_chutadas"]
-    tentativas = st.session_state["tentativas"]
-    acertos = st.session_state["acertos"]
+  palavra_secreta = st.session_state["palavra_secreta"]
+  palavra_chutada = st.session_state["palavra_chutada"]
+  letras_chutadas = st.session_state["letras_chutadas"]
+
+  for index, letra in enumerate(palavra_secreta):
+    # Checando se a letra está na palavra:
+    if chute == letra:
+      palavra_chutada[index] = letra
+      acertos += 1
+      acertou = True
+  
+  if acertou == False:
+    tentativas -=1
+    lista_letras_chutadas = st.session_state["letras_chutadas"]
+    lista_letras_chutadas.append(chute)
+    st.session_state["letras_chutadas"] = lista_letras_chutadas
+    print(f"{chute} não está na palavra secreta")
+    print(f"Letras chutadas: {lista_letras_chutadas}")
+    print(f"Tentativas restantes: {tentativas}")
     
-    acertou = False  # Variável para verificar se o chute está correto
+  palavra_chutada_print = " ".join(palavra_chutada)
+  st.write(palavra_chutada_print)
 
-    # Checar se o chute está correto
-    for index, letra in enumerate(palavra_secreta):
-        if chute == letra:
-            palavra_chutada[index] = letra
-            acertos += 1
-            acertou = True
+    # Inserir Loop do Jogo
 
-    # Se o chute estiver incorreto
-    if not acertou:
-        if chute not in letras_chutadas:  # Verificar se a letra já foi chutada
-            tentativas -= 1
-            letras_chutadas.append(chute)
-    
-    # Atualizar session_state com os novos valores
-    st.session_state["palavra_chutada"] = palavra_chutada
-    st.session_state["letras_chutadas"] = letras_chutadas
-    st.session_state["tentativas"] = tentativas
-    st.session_state["acertos"] = acertos
-
-    # Mostrar estado atual do jogo
-    st.write("Palavra: " + " ".join(palavra_chutada))
-    st.write(f"Tentativas restantes: {tentativas}")
-    st.write(f"Letras chutadas: {', '.join(letras_chutadas)}")
-
-    # Verificar se o jogador ganhou ou perdeu
-    if acertos == len(palavra_secreta):
-        st.success("Parabéns! Você acertou a palavra!")
-    elif tentativas == 0:
-        st.error(f"Você perdeu! A palavra era: {palavra_secreta}")
+# if st.button("Mudar palavra"):
+#   palavra_secreta = random.choice(lista_palavras)
+#   st.session_state['palavra_secreta'] = palavra_secreta
