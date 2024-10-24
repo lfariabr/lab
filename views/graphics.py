@@ -5,7 +5,7 @@ import streamlit as st
 
 #### NOVO _ GRÁFICOS - novo
 
-st.title("Graphics!")
+st.title("Teste Graphics!")
 
 # leads = 'leads.xlsx'
 # df_leads = pd.read_excel(leads)
