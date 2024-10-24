@@ -24,3 +24,15 @@ groupby_leads_por_dia = df_leads.groupby('Dia').agg({'ID do lead': 'nunique'}).r
 
 # Parte 5: Escrever o nome do gráfico pra conferir
 st.write("Gráfico de leads por dia!")
+
+# Parte 6: Criar um gráfico de linhas para os dias do mês
+grafico_leads_por_dia = px.line(
+  groupby_leads_por_dia,
+  x='Dia', # linha horizontal do gráfico
+  y='ID do lead', # linha vertical
+  title='Gráfico de leads por dia!', # titulo...
+  labels={'ID do lead': 'Quantida de Leads', 'Dia': 'Dia do mês'}, # Tags/nomenclatura
+  markers=True # marcadores nos pontos das linhas
+)
+
+st.plotly_chart(grafico_leads_por_dia)
