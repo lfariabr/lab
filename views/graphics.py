@@ -7,5 +7,5 @@ import streamlit as st
 
 st.title("Graphics!")
 
-leads = 'leads.xlsx'
-df_leads = pd.read_excel(leads)
+# leads = 'leads.xlsx'
+# df_leads = pd.read_excel(leads)
