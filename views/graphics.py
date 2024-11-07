@@ -82,11 +82,13 @@ with col3:
       .agg({'ID do lead': 'nunique'})  
       .reset_index()                   
   )
+  
+  #fig = px.pie(df, values='pop', names='country', title='Population of European continent')
   # Parte 5c: gráfico
   grafico_leads_por_fonte = px.pie(
       groupby_leads_por_fonte,
-      x='Fonte',
-      y='ID do lead',
+      names='Fonte',
+      values='ID do lead',
       title='Número de Leads por Fonte',
       labels={'ID do lead': 'Número de leads', 'Fonte': 'Fonte'},
   )
