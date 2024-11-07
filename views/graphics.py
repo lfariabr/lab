@@ -83,7 +83,7 @@ with col3:
       .reset_index()                   
   )
   # Parte 5c: gráfico
-  grafico_leads_por_fonte = px.bar(
+  grafico_leads_por_fonte = px.pie(
       groupby_leads_por_fonte,
       x='Fonte',
       y='ID do lead',
