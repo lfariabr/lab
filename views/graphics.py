@@ -18,6 +18,9 @@ df_leads['Dia'] = df_leads['Dia da entrada'].dt.day # Isola o dia da coluna "Dia
 st.write("Dataframe")
 st.dataframe(df_leads)
 
+##############################
+# Gráfico por Dia
+
 # Parte 4a: Group by por dia do mês contando os leads
 groupby_leads_por_dia = (
     df_leads
@@ -25,9 +28,8 @@ groupby_leads_por_dia = (
     .agg({'ID do lead': 'nunique'})  # Contando a quantidade única de 'ID do lead'
     .reset_index()                   # Resetando o índice para manter o formato de DataFrame
 )
-# Parte 5a: Escrever o nome do gráfico pra conferir
-st.write("Gráfico de Leads por dia!")
-# Parte 6a: Criar um gráfico de linhas para os dias do mês
+
+# Parte 5a: Criar um gráfico de linhas para os dias do mês
 grafico_leads_por_dia = px.line(
   groupby_leads_por_dia,
   x='Dia', # linha horizontal do gráfico
@@ -38,15 +40,28 @@ grafico_leads_por_dia = px.line(
 )
 st.plotly_chart(grafico_leads_por_dia)
 
-# Parte 4b: Group by por unidade contando os leads
+##############################
+# Gráfico por Unidade
+
+# Parte 4b: 
+# Group by por unidade contando os leads
 groupby_leads_por_unidade = (
     df_leads
     .groupby('Unidade')                 # Agrupando pelo campo 'Dia'
     .agg({'ID do lead': 'nunique'})  # Contando a quantidade única de 'ID do lead'
     .reset_index()                   # Resetando o índice para manter o formato de DataFrame
 )
-# Parte 5b: Escrever o nome do gráfico para conferir
-st.write("Gráfico Leads por unidade! teste")
+# Parte 5b:
+# Criar um gráfico de colunas para as unidades do mês
+grafico_leads_por_unidade = px.bar(
+  groupby_leads_por_dia,
+  x='Dia', # linha horizontal do gráfico
+  y='ID do lead', # linha vertical
+  title='Gráfico de leads por dia!', # titulo...
+  labels={'ID do lead': 'Quantida de Leads', 'Dia': 'Dia do mês'}, # Tags/nomenclatura
+  markers=True # marcadores nos pontos das colunas
+)
+st.plotly_chart(grafico_leads_por_unidade)
 
 # Para fazer mais gráficos, precisaremos repetir os passos 4, 5 e 6 adaptando onde necessário
 
