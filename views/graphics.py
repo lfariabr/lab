@@ -58,7 +58,7 @@ grafico_leads_por_unidade = px.bar(
   x='Unidade', # linha horizontal do gráfico
   y='ID do lead', # linha vertical
   title='Gráfico de leads por dia!', # titulo...
-  labels={'ID do lead': 'Quantida de Leads', 'Dia': 'Dia do mês'}, # Tags/nomenclatura
+  labels={'ID do lead': 'Quantida de Leads', 'Unidade': 'Unidade'}, # Tags/nomenclatura
 )
 st.plotly_chart(grafico_leads_por_unidade)
 
