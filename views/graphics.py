@@ -54,12 +54,12 @@ groupby_leads_por_unidade = (
 # Parte 5b:
 # Criar um gráfico de colunas para as unidades do mês
 grafico_leads_por_unidade = px.bar(
-  groupby_leads_por_dia,
-  x='Unidade', # linha horizontal do gráfico
-  y='ID do lead', # linha vertical
-  title='Gráfico de leads por dia!', # titulo...
-  labels={'ID do lead': 'Quantida de Leads', 'Unidade': 'Unidade'}, # Tags/nomenclatura
-)
+  groupby_leads_por_unidade,
+        x='Unidade',
+        y='ID do lead',
+        title='Número de Leads por Loja',
+        labels={'ID do lead': 'Número de Leads', 'Unidade': 'Unidade'},
+    )
 st.plotly_chart(grafico_leads_por_unidade)
 
 # Para fazer mais gráficos, precisaremos repetir os passos 4, 5 e 6 adaptando onde necessário
