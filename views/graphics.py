@@ -4,8 +4,7 @@ import plotly.express as px
 import streamlit as st
 
 #### NOVO _ GRÁFICOS - novo
-st.title("Leads 11!")
-st.write("Dataframe")
+st.title("Página 11 - Leads")
 
 # Parte 1: Carregando e abrindo o arquivo de leads
 leads = 'leads.xlsx'
