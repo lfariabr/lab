@@ -4,8 +4,8 @@ import plotly.express as px
 import streamlit as st
 
 #### NOVO _ GRÁFICOS - novo
-
-st.title("Teste Graphics!")
+st.title("Leads 11!")
+st.write("Dataframe")
 
 # Parte 1: Carregando e abrindo o arquivo de leads
 leads = 'leads.xlsx'
@@ -20,8 +20,12 @@ df_leads['Dia da entrada'] = pd.to_datetime(df_leads['Dia da entrada']) # Dizend
 df_leads['Dia'] = df_leads['Dia da entrada'].dt.day
 
 # Parte 4: Group by por dia do mês contando os leads
-groupby_leads_por_dia = df_leads.groupby('Dia').agg({'ID do lead': 'nunique'}).reset_index()
-
+groupby_leads_por_dia = (
+    df_leads
+    .groupby('Dia')                 # Agrupando pelo campo 'Dia'
+    .agg({'ID do lead': 'nunique'})  # Contando a quantidade única de 'ID do lead'
+    .reset_index()                   # Resetando o índice para manter o formato de DataFrame
+)
 # Parte 5: Escrever o nome do gráfico pra conferir
 st.write("Gráfico de leads por dia!")
 
@@ -36,3 +40,9 @@ grafico_leads_por_dia = px.line(
 )
 
 st.plotly_chart(grafico_leads_por_dia)
+
+# Para fazer mais gráficos, precisaremos
+# repetir os passos 4, 5 e 6
+# Adaptando onde necessário
+# Parte 7: Fazendo um segundo gráfico, de Pizza
+st.write("")
