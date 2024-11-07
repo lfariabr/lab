@@ -46,7 +46,7 @@ groupby_leads_por_unidade = (
     .reset_index()                   # Resetando o índice para manter o formato de DataFrame
 )
 # Parte 5b: Escrever o nome do gráfico para conferir
-st.write("Gráfico Leads por unidade!")
+st.write("Gráfico Leads por unidade! teste")
 
 # Para fazer mais gráficos, precisaremos repetir os passos 4, 5 e 6 adaptando onde necessário
 
