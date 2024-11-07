@@ -95,8 +95,24 @@ with col3:
   st.plotly_chart(grafico_leads_por_fonte)
 
 with col4:
-  # Parte
-  st.write("Teste")
+  # Parte 4c: groupby
+  groupby_leads_por_status = (
+      df_leads
+      .groupby('Status')                
+      .agg({'ID do lead': 'nunique'})  
+      .reset_index()                   
+  )
+  
+  #fig = px.pie(df, values='pop', names='country', title='Population of European continent')
+  # Parte 5c: gráfico
+  grafico_leads_por_status = px.pie(
+      groupby_leads_por_status,
+      names='Status',
+      values='ID do lead',
+      title='Número de Leads por Status',
+      labels={'ID do lead': 'Número de leads', 'Status': 'Status'},
+  )
+  st.plotly_chart(grafico_leads_por_status)
 
 # Parte 7: Fazendo um segundo gráfico, de Pizza
 st.write("")
