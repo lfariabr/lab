@@ -55,7 +55,7 @@ groupby_leads_por_unidade = (
 # Criar um gráfico de colunas para as unidades do mês
 grafico_leads_por_unidade = px.bar(
   groupby_leads_por_dia,
-  x='Dia', # linha horizontal do gráfico
+  x='Unidade', # linha horizontal do gráfico
   y='ID do lead', # linha vertical
   title='Gráfico de leads por dia!', # titulo...
   labels={'ID do lead': 'Quantida de Leads', 'Dia': 'Dia do mês'}, # Tags/nomenclatura
