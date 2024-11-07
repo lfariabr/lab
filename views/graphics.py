@@ -69,5 +69,32 @@ with col2:
 
 # Para fazer mais gráficos, precisaremos repetir os passos 4, 5 e 6 adaptando onde necessário
 
+##############################
+# Colunas 3 e 4:
+##############################
+col3, col4 = st.columns(2)
+
+with col3:
+  # Parte 4c: groupby
+  groupby_leads_por_fonte = (
+      df_leads
+      .groupby('Fonte')                
+      .agg({'ID do lead': 'nunique'})  
+      .reset_index()                   
+  )
+  # Parte 5c: gráfico
+  grafico_leads_por_fonte = px.bar(
+      groupby_leads_por_fonte,
+      x='Fonte',
+      y='ID do lead',
+      title='Número de Leads por Fonte',
+      labels={'ID do lead': 'Número de leads', 'Fonte': 'Fonte'},
+  )
+  st.plotly_chart(grafico_leads_por_fonte)
+
+with col4:
+  # Parte
+  st.write("Teste")
+
 # Parte 7: Fazendo um segundo gráfico, de Pizza
 st.write("")
