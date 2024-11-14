@@ -34,3 +34,17 @@ groupby_vendas_por_dia = (
 
 st.write("Exibindo o groupby_vendas_por_dia")
 st.dataframe(groupby_vendas_por_dia)
+
+# Tarefa de colocar linha de tendência no gráfico
+
+# Parte 5: Group by Venda / Dia / Loja
+# colunas: 'Unidade', 'Valor líquido', 'Dia'
+groupby_vendas_dia_loja = (
+    df_sales
+    .groupby(['Dia', 'Unidade'])                
+    .agg({'Valor líquido': 'sum'})  
+    .reset_index()                   
+)
+
+st.write("Exibindo o groupby_vendas_dia_loja")
+st.dataframe(groupby_vendas_dia_loja)
