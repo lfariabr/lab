@@ -38,7 +38,7 @@ grafico_vendas_por_dia = px.bar(
     groupby_vendas_por_dia,
     x='Dia',
     y='Valor líquido',
-    title='Vendas por Dia',
+    title='Venda Diária',
     labels={'Valor líquido': 'Valor Líquido', 'Dia': 'Dia do Mês'},
 )
 st.plotly_chart(grafico_vendas_por_dia)
@@ -62,5 +62,5 @@ pivot_vendas_dia_loja = groupby_vendas_dia_loja.pivot(
                         columns='Unidade', 
                         values='Valor líquido')
 
-st.write("Mostrando o Pivot no frontend")
+st.write("Venda Diária Detalhada")
 st.dataframe(pivot_vendas_dia_loja)
