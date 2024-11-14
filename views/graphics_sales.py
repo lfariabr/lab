@@ -15,11 +15,10 @@ df_sales = pd.read_excel(sales)
 # Parte 2: Montando um groupby com as vendas por dia
 ######## 
 # Parte 2a - Criando uma coluna para "DIA"
-# Aqui vamos dizer para o código que este campo é uma data (pd.to_datetime)
-df_sales['Data venda'] = pd.to_datetime(df_sales['Data venda']) 
+df_sales['Data venda'] = pd.to_datetime(df_sales['Data venda']) # Aqui vamos dizer para o código que este campo é uma data (pd.to_datetime)
+df_sales['Dia'] = df_sales['Data venda'].dt.day # Isolando o dia do campo "Data venda"
 
-# Isolando o dia do campo "Data venda"
-df_sales['Dia'] = df_sales['Data venda'].dt.day
+df_sales['Valor líquido'] = df_sales['Valor líquido'].fillna(0) # Fill NA 0
 
 # Parte 3: Exibir o dataframe no frontend
 # st.write("Mostrando o Dataframe no frontend")
