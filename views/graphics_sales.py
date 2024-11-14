@@ -35,6 +35,16 @@ groupby_vendas_por_dia = (
 st.write("Exibindo o groupby_vendas_por_dia")
 st.dataframe(groupby_vendas_por_dia)
 
+# Gráfico barra vendas_por_dia
+grafico_vendas_por_dia = px.bar(
+    groupby_vendas_por_dia,
+    x='Dia',
+    y='Valor líquido',
+    title='Vendas por Dia',
+    labels={'Valor líquido': 'Valor Líquido', 'Dia': 'Dia do Mês'},
+)
+st.plotly_chart(grafico_vendas_por_dia)
+
 # Tarefa de colocar linha de tendência no gráfico
 
 # Parte 5: Group by Venda / Dia / Loja
