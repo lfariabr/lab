@@ -30,6 +30,13 @@ graphics = st.Page(
     icon="📈",
 )
 
+# /content/lab/views/graphics_sales.py
+graphics_sales = st.Page(
+    "view/graphics_sales.py",
+    title="graphics_sales",
+    icon="💸",
+)
+
 forca = st.Page(
     "views/forca.py",
     title="forca",
@@ -40,7 +47,7 @@ forca = st.Page(
 pg = st.navigation(
     {
         "numbers": [currency_converter, calculator],
-        "pro-corpo": [graphics],
+        "pro-corpo": [graphics, graphics_sales],
         "games": [forca]
     }
 )
