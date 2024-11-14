@@ -18,9 +18,6 @@ df_sales = pd.read_excel(sales)
 df_sales['Data venda'] = pd.to_datetime(df_sales['Data venda']) # Aqui vamos dizer para o código que este campo é uma data (pd.to_datetime)
 df_sales['Dia'] = df_sales['Data venda'].dt.day # Isolando o dia do campo "Data venda"
 
-df_sales['Valor líquido'] = df_sales['Valor líquido'].fillna(0) # Fill NA 0
-df_sales['Valor líquido'] = df_sales['Valor líquido'].replace('None', 0)
-
 # Parte 3: Exibir o dataframe no frontend
 # st.write("Mostrando o Dataframe no frontend")
 # st.dataframe(df_sales)
