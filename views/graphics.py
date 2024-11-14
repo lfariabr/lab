@@ -4,7 +4,7 @@ import plotly.express as px
 import streamlit as st
 
 # Título
-st.title("10 - Leads")
+st.title("10 - Leads - Test")
 
 # Parte 1: Carregando e abrindo o arquivo de leads
 leads = 'leads.xlsx'
@@ -48,7 +48,7 @@ with col2:
   ##############################
   # Gráfico por Unidade
 
-  # Parte 4b: 
+  # Parte 4b:
   # Group by por unidade contando os leads
   groupby_leads_por_unidade = (
       df_leads
@@ -78,11 +78,11 @@ with col3:
   # Parte 4c: groupby
   groupby_leads_por_fonte = (
       df_leads
-      .groupby('Fonte')                
-      .agg({'ID do lead': 'nunique'})  
-      .reset_index()                   
+      .groupby('Fonte')
+      .agg({'ID do lead': 'nunique'})
+      .reset_index()
   )
-  
+
   #fig = px.pie(df, values='pop', names='country', title='Population of European continent')
   # Parte 5c: gráfico
   grafico_leads_por_fonte = px.pie(
@@ -98,11 +98,11 @@ with col4:
   # Parte 4c: groupby
   groupby_leads_por_status = (
       df_leads
-      .groupby('Status')                
-      .agg({'ID do lead': 'nunique'})  
-      .reset_index()                   
+      .groupby('Status')
+      .agg({'ID do lead': 'nunique'})
+      .reset_index()
   )
-  
+
   #fig = px.pie(df, values='pop', names='country', title='Population of European continent')
   # Parte 5c: gráfico
   grafico_leads_por_status = px.pie(
@@ -114,5 +114,18 @@ with col4:
   )
   st.plotly_chart(grafico_leads_por_status)
 
-# Parte 7: Fazendo um segundo gráfico, de Pizza
-st.write("")
+##############################
+# Tabelas
+##############################
+
+# Fonte por Unidade
+fontes_pagas = ['Facebook Leads', 'Facebook Postlink', 'Google Pesquisa']
+fontes_organicas = ['Instagram', 'Facebook', 'CRM Bônus']
+# Próximo Papo: Fazer groupby por unidade x fonte
+# st.dataframe()
+
+# Lead por Dia por Unidade
+# Próximo Papo: Fazer groupby por unidade x dia
+# st.dataframe()
+
+# Fazer a página de Vendas
