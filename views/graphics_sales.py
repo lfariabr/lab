@@ -22,8 +22,8 @@ df_sales['Data venda'] = pd.to_datetime(df_sales['Data venda'])
 df_sales['Dia'] = df_sales['Data venda'].dt.day
 
 # Parte 3: Exibir o dataframe no frontend
-st.write("Mostrando o Dataframe no frontend")
-st.dataframe(df_sales)
+# st.write("Mostrando o Dataframe no frontend")
+# st.dataframe(df_sales)
 
 # Parte 4: Group by Vendas por Dia
 groupby_vendas_por_dia = (
