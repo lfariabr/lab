@@ -63,5 +63,5 @@ pivot_vendas_dia_loja = groupby_vendas_dia_loja.pivot(
                         columns='Unidade', 
                         values='Valor líquido')
 
-st.write("Venda Diária Detalhada")
+st.write("Venda Diária Detalhada ")
 st.dataframe(pivot_vendas_dia_loja)
