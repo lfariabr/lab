@@ -21,7 +21,6 @@ df_sales['Dia'] = df_sales['Data venda'].dt.day # Isolando o dia do campo "Data 
 df_sales['Valor líquido'] = df_sales['Valor líquido'].fillna(0) # Fill NA 0
 df_sales['Valor líquido'] = df_sales['Valor líquido'].replace('None', 0)
 
-
 # Parte 3: Exibir o dataframe no frontend
 # st.write("Mostrando o Dataframe no frontend")
 # st.dataframe(df_sales)
@@ -54,7 +53,8 @@ groupby_vendas_dia_loja = (
     df_sales
     .groupby(['Dia', 'Unidade'])                
     .agg({'Valor líquido': 'sum'})  
-    .reset_index()                   
+    .reset_index()
+    .fillna(0)                   
 )
 
 # Pivotando os dados para exibir Dia x Unidade
