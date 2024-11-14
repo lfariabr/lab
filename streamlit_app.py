@@ -30,9 +30,8 @@ graphics = st.Page(
     icon="📈",
 )
 
-# /content/lab/views/graphics_sales.py
 graphics_sales = st.Page(
-    "view/graphics_sales.py",
+    "views/graphics_sales.py",
     title="graphics_sales",
     icon="💸",
 )
