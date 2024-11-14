@@ -4,7 +4,7 @@ import plotly.express as px
 import streamlit as st
 
 # Título
-st.title("10 - Leads - Test")
+st.title("10 - Leads")
 
 # Parte 1: Carregando e abrindo o arquivo de leads
 leads = 'leads.xlsx'
@@ -63,7 +63,9 @@ with col2:
           x='Unidade',
           y='ID do lead',
           title='Número de Leads por Loja',
-          labels={'ID do lead': 'Número de Leads', 'Unidade': 'Unidade'},
+          labels={
+              'ID do lead': 'Número de Leads', 
+              'Unidade': 'Unidade'},
       )
   st.plotly_chart(grafico_leads_por_unidade)
 

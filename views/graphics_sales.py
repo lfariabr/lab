@@ -33,9 +33,6 @@ groupby_vendas_por_dia = (
       .reset_index()                   
   )
 
-st.write("Exibindo o groupby_vendas_por_dia")
-st.dataframe(groupby_vendas_por_dia)
-
 # Gráfico barra vendas_por_dia
 grafico_vendas_por_dia = px.bar(
     groupby_vendas_por_dia,
@@ -46,7 +43,9 @@ grafico_vendas_por_dia = px.bar(
 )
 st.plotly_chart(grafico_vendas_por_dia)
 
+#####
 # Tarefa de colocar linha de tendência no gráfico
+####
 
 # Parte 5: Group by Venda / Dia / Loja
 # colunas: 'Unidade', 'Valor líquido', 'Dia'
@@ -57,5 +56,11 @@ groupby_vendas_dia_loja = (
     .reset_index()                   
 )
 
-st.write("Exibindo o groupby_vendas_dia_loja")
-st.dataframe(groupby_vendas_dia_loja)
+# Pivotando os dados para exibir Dia x Unidade
+pivot_vendas_dia_loja = groupby_vendas_dia_loja.pivot(
+                        index='Dia', 
+                        columns='Unidade', 
+                        values='Valor líquido')
+
+st.write("Mostrando o Pivot no frontend")
+st.dataframe(pivot_vendas_dia_loja)
