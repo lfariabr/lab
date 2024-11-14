@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import numpy as np
 
 # Título
-st.title("Sales Page")
+st.title("02 - Vendas")
 
 # Parte 1: Carregando e abrindo o arquivo de sales
 sales = 'sales.xlsx'
