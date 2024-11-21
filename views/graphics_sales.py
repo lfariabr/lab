@@ -50,15 +50,13 @@ groupby_vendas_dia_loja = (
     .fillna(0)
 )
 
-st.write(groupby_vendas_dia_loja)
-
 # Pivotando os dados para exibir Dia x Unidade
 pivot_vendas_dia_loja = groupby_vendas_dia_loja.pivot(
                         index='Dia',
                         columns='Unidade',
                         values='Valor líquido')
 
-pivot_vendas_dia_loja = pivot_vendas_dia_loja.fillna(0)
+pivot_vendas_dia_loja
 
 st.write("Venda Diária Detalhada")
 st.dataframe(pivot_vendas_dia_loja)
