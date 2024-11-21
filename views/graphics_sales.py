@@ -92,4 +92,12 @@ groupby_vendas_por_vendedoras = (
     .head(10) # top 10
 )
 
-st.write(groupby_vendas_por_vendedoras)
+# Gráfico barra vendas_por_dia
+grafico_vendas_por_consultor = px.bar(
+    groupby_vendas_por_vendedoras,
+    x='Consultor',
+    y='Valor líquido',
+    title='Venda Por Consultora',
+    labels={'Valor líquido': 'Valor Líquido', 'Consultor': 'Consultora de Vendas'},
+)
+st.plotly_chart(grafico_vendas_por_consultor)
