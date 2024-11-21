@@ -12,12 +12,19 @@ st.title("02 - Sales")
 sales = 'sales.xlsx'
 df_sales = pd.read_excel(sales)
 
-# Groupby com as vendas por dia
 ########
-# Parte 2a - Criando uma coluna para "DIA"
+# Tratativas especiais:
+# Tratativa #1: Criando uma coluna para "DIA"
 df_sales['Data venda'] = pd.to_datetime(df_sales['Data venda']) # Aqui vamos dizer para o código que este campo é uma data (pd.to_datetime)
 df_sales['Dia'] = df_sales['Data venda'].dt.day # Isolando o dia do campo "Data venda"
 
+# Tratativa #2: Filtrando apenas vendas Finalizadas
+df_sales = df_sales.loc[df_sales['Status'] == 'Finalizado']
+
+# Tratativa #3: Excluindo Consultor "BKO VENDAS"
+df_sales = df_sales.loc[df_sales['Consultor'] != 'BKO VENDAS']
+
+# Groupby com as vendas por dia
 # Group by Vendas por Dia
 groupby_vendas_por_dia = (
       df_sales
