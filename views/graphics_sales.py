@@ -6,14 +6,14 @@ import plotly.graph_objects as go
 import numpy as np
 
 # Título
-st.title("02 - Vendas")
+st.title("02 - Sales")
 
 # Parte 1: Carregando e abrindo o arquivo de sales
 sales = 'sales.xlsx'
 df_sales = pd.read_excel(sales)
 
 # Parte 2: Montando um groupby com as vendas por dia
-######## 
+########
 # Parte 2a - Criando uma coluna para "DIA"
 df_sales['Data venda'] = pd.to_datetime(df_sales['Data venda']) # Aqui vamos dizer para o código que este campo é uma data (pd.to_datetime)
 df_sales['Dia'] = df_sales['Data venda'].dt.day # Isolando o dia do campo "Data venda"
@@ -25,9 +25,9 @@ df_sales['Dia'] = df_sales['Data venda'].dt.day # Isolando o dia do campo "Data 
 # Parte 4: Group by Vendas por Dia
 groupby_vendas_por_dia = (
       df_sales
-      .groupby('Dia')                
-      .agg({'Valor líquido': 'sum'})  
-      .reset_index()                   
+      .groupby('Dia')
+      .agg({'Valor líquido': 'sum'})
+      .reset_index()
   )
 
 # Gráfico barra vendas_por_dia
@@ -48,16 +48,16 @@ st.plotly_chart(grafico_vendas_por_dia)
 # colunas: 'Unidade', 'Valor líquido', 'Dia'
 groupby_vendas_dia_loja = (
     df_sales
-    .groupby(['Dia', 'Unidade'])                
-    .agg({'Valor líquido': 'sum'})  
+    .groupby(['Dia', 'Unidade'])
+    .agg({'Valor líquido': 'sum'})
     .reset_index()
-    .fillna(0)                   
+    .fillna(0)
 )
 
 # Pivotando os dados para exibir Dia x Unidade
 pivot_vendas_dia_loja = groupby_vendas_dia_loja.pivot(
-                        index='Dia', 
-                        columns='Unidade', 
+                        index='Dia',
+                        columns='Unidade',
                         values='Valor líquido')
 
 pivot_vendas_dia_loja = pivot_vendas_dia_loja.fillna(0)
