@@ -24,7 +24,7 @@ currency_converter = st.Page(
     icon="💰",
 )
 
-graphics = st.Page(
+graphics_leads = st.Page(
     "views/graphics.py",
     title="graphics",
     icon="📈",
@@ -46,7 +46,7 @@ forca = st.Page(
 pg = st.navigation(
     {
         "numbers": [currency_converter, calculator],
-        "pro-corpo": [graphics, graphics_sales],
+        "pro-corpo reports": [graphics_leads, graphics_sales],
         "games": [forca]
     }
 )
