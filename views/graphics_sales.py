@@ -89,7 +89,7 @@ with col1:
   st.plotly_chart(grafico_vendas_por_profissao_top10)
 
 with col2:
-  
+
   # Groupby por Vendedoras
   groupby_vendas_por_vendedoras = (
       df_sales
@@ -109,3 +109,6 @@ with col2:
       labels={'Valor líquido': 'Valor Líquido', 'Consultor': 'Consultora de Vendas'},
   )
   st.plotly_chart(grafico_vendas_por_consultor)
+
+
+st.dataframe(df_sales)
