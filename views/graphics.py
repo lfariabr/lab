@@ -126,14 +126,26 @@ fontes_organicas = ['Instagram', 'Facebook', 'CRM Bônus']
 
 # Próximo Papo: Fazer groupby por unidade x fonte
 
-groupby_unidade_fonte = (
-    df_leads
+df_leads_fontes_pagas = df_leads.loc[df_leads['Fonte'].isin(fontes_pagas)]
+df_leads_fontes_organicas = df_leads.loc[df_leads['Fonte'].isin(fontes_organicas)]
+
+groupby_unidade_fonte_paga = (
+    df_leads_fontes_pagas
     .groupby(['Unidade','Fonte'])
     .agg({'ID do lead': 'nunique'})
     .reset_index()
 )
 
-st.write(groupby_unidade_fonte)
+st.write(groupby_unidade_fonte_paga)
+
+groupby_unidade_fonte_organica = (
+    df_leads_fontes_organicas
+    .groupby(['Unidade', 'Fonte'])
+    .agg({'ID do lead': 'nunique'})
+    .reset_index()
+)
+
+st.write(groupby_unidade_fonte_organica)
 
 # st.dataframe()
 
