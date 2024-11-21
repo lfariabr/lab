@@ -26,7 +26,7 @@ currency_converter = st.Page(
 
 graphics_leads = st.Page(
     "views/graphics.py",
-    title="graphics",
+    title="graphics_leads",
     icon="📈",
 )
 
