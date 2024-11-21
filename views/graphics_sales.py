@@ -68,6 +68,7 @@ groupby_vendas_por_profissao = (
     .agg({'Valor líquido': 'sum'})
     .reset_index()
     .sort_values('Valor líquido', ascending=False)
+    .head(10) # top 10
 )
 
 st.write(groupby_vendas_por_profissao)
