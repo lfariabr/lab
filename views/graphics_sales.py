@@ -116,6 +116,3 @@ with col2:
       labels={'Valor líquido': 'Valor Líquido', 'Consultor': 'Consultora de Vendas'},
   )
   st.plotly_chart(grafico_vendas_por_consultor)
-
-
-st.dataframe(df_sales)
