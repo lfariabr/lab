@@ -85,7 +85,7 @@ st.plotly_chart(grafico_vendas_por_profissao_top10)
 # Groupby por Vendedoras
 groupby_vendas_por_vendedoras = (
     df_sales
-    .groupby('Consultora de vendas')
+    .groupby('Consultor de vendas')
     .agg({'Valor líquido': 'sum'})
     .reset_index()
     .sort_values('Valor líquido', ascending=False)
