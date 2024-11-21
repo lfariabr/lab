@@ -71,4 +71,13 @@ groupby_vendas_por_profissao = (
     .head(10) # top 10
 )
 
-st.write(groupby_vendas_por_profissao)
+# Gráfico de Pizza 
+grafico_vendas_por_profissao_top10 = px.pie(
+      groupby_vendas_por_profissao,
+      names='Profissão cliente',
+      values='Valor líquido', # : 'sum'
+      title='Valor comprado por Profissão',
+      labels={'Valor líquido': 'Valor Comprado', 'Profissão cliente': 'Profissão'},
+  )
+
+st.plotly_chart(grafico_vendas_por_profissao_top10)
