@@ -64,7 +64,7 @@ with col2:
           y='ID do lead',
           title='Número de Leads por Loja',
           labels={
-              'ID do lead': 'Número de Leads', 
+              'ID do lead': 'Número de Leads',
               'Unidade': 'Unidade'},
       )
   st.plotly_chart(grafico_leads_por_unidade)
@@ -123,7 +123,18 @@ with col4:
 # Fonte por Unidade
 fontes_pagas = ['Facebook Leads', 'Facebook Postlink', 'Google Pesquisa']
 fontes_organicas = ['Instagram', 'Facebook', 'CRM Bônus']
+
 # Próximo Papo: Fazer groupby por unidade x fonte
+
+groupby_unidade_fonte = (
+    df_leads
+    .groupby(['Unidade','Fonte'])
+    .agg({'ID do lead': 'nunique'})
+    .reset_index()
+)
+
+st.write(groupby_unidade_fonte)
+
 # st.dataframe()
 
 # Lead por Dia por Unidade
