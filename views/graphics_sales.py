@@ -8,21 +8,17 @@ import numpy as np
 # Título
 st.title("02 - Sales")
 
-# Parte 1: Carregando e abrindo o arquivo de sales
+# Carregando e abrindo o arquivo de sales
 sales = 'sales.xlsx'
 df_sales = pd.read_excel(sales)
 
-# Parte 2: Montando um groupby com as vendas por dia
+# Groupby com as vendas por dia
 ########
 # Parte 2a - Criando uma coluna para "DIA"
 df_sales['Data venda'] = pd.to_datetime(df_sales['Data venda']) # Aqui vamos dizer para o código que este campo é uma data (pd.to_datetime)
 df_sales['Dia'] = df_sales['Data venda'].dt.day # Isolando o dia do campo "Data venda"
 
-# Parte 3: Exibir o dataframe no frontend
-# st.write("Mostrando o Dataframe no frontend")
-# st.dataframe(df_sales)
-
-# Parte 4: Group by Vendas por Dia
+# Group by Vendas por Dia
 groupby_vendas_por_dia = (
       df_sales
       .groupby('Dia')
@@ -44,7 +40,7 @@ st.plotly_chart(grafico_vendas_por_dia)
 # Tarefa de colocar linha de tendência no gráfico
 ####
 
-# Parte 5: Group by Venda / Dia / Loja
+# Group by Venda / Dia / Loja
 # colunas: 'Unidade', 'Valor líquido', 'Dia'
 groupby_vendas_dia_loja = (
     df_sales
@@ -53,6 +49,8 @@ groupby_vendas_dia_loja = (
     .reset_index()
     .fillna(0)
 )
+
+st.write(groupby_vendas_dia_loja)
 
 # Pivotando os dados para exibir Dia x Unidade
 pivot_vendas_dia_loja = groupby_vendas_dia_loja.pivot(
